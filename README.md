@@ -1,4 +1,4 @@
-# System Programming Linux_command
+# Linux_command
 
 <h1>System Programming</h1>
 
@@ -199,4 +199,78 @@
 
 <p>
   <b>Ans:</b> A core dump is a snapshot of certain dynamic regions (segments) of the process at the time it crashed (technically, it's a snapshot of minimally the data and stack segments). The core dump can be analyzed postmortem using debuggers such as GDB.
+</p>
+
+<p style="font-size: 20px; color: red;">
+  <b>Q: How does the system know that this region is protected and what kind of protection it has?</b>
+</p>
+
+<p>
+  <b>Ans:</b>These details are encoded into the Paging Table Entry (PTEs) for the process, and are checked by the MMU on every access!
+</p>
+
+<p style="font-size: 20px; color: red;">
+  <b>Q: How dynamic library works?</b>
+</p>
+
+<p>
+  <b>Ans:</b>
+  <ol>
+    <li><b>Program Startup.</b></li>
+    	<b>When you run a dynamically linked executable:</b>
+      <ul>
+        <li> The kernel loads the executable's ELF header.</li>
+        <li> It sees that the program is dynamically linked and hands control to the dynamic loader.</li>
+      </ul>
+    <li><b>Reading the ELF Headers</b></li>
+      <b>The dynamic loader:</b>
+      <ul>
+        <li>Parses the ELF (Executable and Linkable Format) headers.</li>
+        <li>Identifies all required shared libraries listed in the .dynamic section</li>
+         <mark>readelf -d executable_name </mark> --> with this cmd you can see your elf is dependent on which all .so files.
+              OR
+        <mark>ldd binary_name</mark>
+      </ul>
+    <li><b>Locating Libraries</b></li>
+      <b>	It searches for each required library using:</b>
+      <ul>
+        <li><b>/etc/ld.so.cache:</b> A fast lookup cache.</li>
+        <li><b>LD_LIBRARY_PATH: </b>Environment variable for custom paths.</li>
+        <li><b>/etc/ld.so.conf:</b> Config file listing library directories.</li>
+        <li><b>Default paths:</b> Like /lib, /usr/lib.</li>
+      </ul>
+    <li><b>Mapping Libraries into Memory</b></li>
+      <b>Once found, each library is:</b>
+      <ul>
+        <li>Mapped into the process’s address space using mmap.</li>
+        <li>The loader ensures that dependencies of libraries are also loaded.</li>
+        <b><mark>e.g cat /proc/3393/maps | grep '.so' </b></mark>  --> 3393 is process pid.
+          7f807a9000-7f807c8000 r-xp 00000000 103:23 2521    /usr/lib/libmnl.so.0.2.0
+        <li>7f807a9000-7f807c8000: Start and end addresses of the memory region.</li>
+        <li><b>r-xp:</b> Permissions:</li>
+        <li><b>r:</b> readable</li>
+        <li><b>w:</b>writable</li>
+        <li><b>x:</b>executable</li>
+        <li><b>p:</b>private (copy-on-write)</li>
+        <li><b>00000000:</b>Offset into the file.</li>
+        <li><b>103:23:</b>Device ID (major:minor).</li>
+        <li><b>2521:</b>Inode number.</li>
+        <li><b>/usr/lib/libmnl.so.0.2.0:</b>Path to the shared library.</li>
+      </ul>
+    <li><b>Relocation and Symbol Resolution</b></li>
+      <b>The loader:</b>
+      <ul>
+        <li>Resolves symbol references (e.g., function names) using the Global Offset Table (GOT) and Procedure Linkage Table (PLT).</li>
+        <li>Applies relocations so that function calls and variable accesses point to the correct memory addresses.</li>
+      </ul>
+    <li><b>Calling Initialization Functions</b></li>
+        <b>Before handing control to main():</b>
+        <ul>
+          <li>The loader calls any initialization routines in the libraries (like __init functions or constructors in C++).</li>
+        </ul>
+    <li><b>Execution Begins</b></li>
+        <ul>
+          <li>Finally, control is passed to the program’s main() function, and execution begins with all libraries loaded and ready.</li>
+        </ul>
+  </ol>
 </p>
