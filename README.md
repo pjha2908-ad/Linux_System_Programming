@@ -9,10 +9,40 @@
   </tr>
 
   <tr>
-    <td><code>Objdump --source <binary_name></code></td>
-    <td>To see assembly language code for the binary.</td>
+    <td><code>Objdump --source binary_name<br>objdump -S binary_name</code></td>
+    <td>Display source code mixed with assembly output.</td>
   </tr>
 
+  <tr>
+    <td><code>objdump -f binary_name</code></td>
+    <td>Display file header.</td>
+  </tr>
+
+  <tr>
+    <td><code>objdump -x binary_name</code></td>
+    <td> Show all headers.</td>
+  </tr>
+
+  <tr>
+    <td><code>objdump -d binary_name</code></td>
+    <td> Shows assembly code of the executable.</td>
+  </tr>
+
+   <tr>
+    <td><code>objdump -h binary_name</code></td>
+    <td> Displays sections like .text, .data, .bss.</td>
+  </tr>
+
+   <tr>
+    <td><code>objdump -t binary_name</code></td>
+    <td> Shows functions, variables, symbols.</td>
+  </tr>
+
+  <tr>
+    <td><code>objdump -s binary_name</code></td>
+    <td> Displays raw contents (hex + ASCII).</td>
+  </tr>
+  
   <tr>
     <td><code>ulimit -f</code></td>
     <td>To query the maximum possible size of files written to by the shell process.</td>
@@ -73,20 +103,63 @@
     </ul>
     </td>
   </tr>
+
+  <tr>
+    <td><code>!!</code></td>
+    <td>Repeat last executed cmd.</td>
+  </tr>
+
+  <tr>
+    <td><code>!$</code></td>
+    <td>Take argument of the last cmd.</td>
+  </tr>
+
+  <tr>
+    <td><code>!-n</code></td>
+    <td>Last back nth executed cmd.</td>
+  </tr>
+
+  <tr>
+    <td><code>dd</code></td>
+    <td>The dd command in Linux is used for low-level copying and conversion of data. It is powerful and often used for disk operations.<br>
+      <mark>dd is dangerous if used incorrectly:</mark>
+      <ul>
+        <li>It can overwrite disks and delete data permanently.</li>
+        <li>Double-check if= and of= before running. </li>
+      </ul>
+      <b>e.g: </b>dd if=/dev/zero of=file.bin bs=1M count=10
+      <b>It creates a file filled with zeros.</b>
+      <ul>
+        <li><b>if=/dev/zero: </b>Input source = infinite stream of zero bytes</li>
+        <li><b>of=file.bin: </b>Output file = file.bin (will be created)</li>
+        <li><b>bs=1M</b>Block size = 1 MB</li>
+        <li><b>count=10 </b>Number of blocks = 10</li>
+      </ul>
+      <b>Result: </b>Creates a file named file.bin of size 10 MB
+    </td>
+  </tr>
   
 </table>
 
 <table>
   <tr>
     <th>File</th>
-    <th>Use</th>
-    <th>Use</th>
+    <th>Use/Description</th>
   </tr>
 
   <tr>
     <td><code>/etc/security/limits.conf</code></td>
-    <td>Config file for resource limit</td>
-    <td>set limits on system resources for users or groups.</td>
+    <td>Config file for resource limit. Set limits on system resources for users or groups.</td>
+  </tr>
+
+  <tr>
+    <td><code>/dev/zero</code></td>
+    <td>
+      <ul>
+        <li>/dev/zero is a pseudo‑device that produces an infinite stream of null bytes (\0) when read.</li>
+        <li>Reading from /dev/zero returns:<br>00000000 00000000 00000000 00000000 ...</li>
+      </ul>
+    </td>
   </tr>
   
 <table>
@@ -227,9 +300,7 @@
       <ul>
         <li>Parses the ELF (Executable and Linkable Format) headers.</li>
         <li>Identifies all required shared libraries listed in the .dynamic section</li>
-         <mark>readelf -d executable_name </mark> --> with this cmd you can see your elf is dependent on which all .so files.
-              OR
-        <mark>ldd binary_name</mark>
+         <mark>readelf -d executable_name </mark> --> with this cmd you can see your elf is dependent on which all .so files.<br>OR<br><mark>ldd binary_name</mark>
       </ul>
     <li><b>Locating Libraries</b></li>
       <b>	It searches for each required library using:</b>
@@ -274,3 +345,28 @@
         </ul>
   </ol>
 </p>
+
+<p style="font-size: 20px; color: red;">
+  <b>Q: What is diff between cmd > /dev/null and cmd > /dev/null 2>&1 ?</b>
+</p>
+
+<p>
+  <b>Ans:</b>
+  <ul>
+    <li>/dev/null hides only stdout.</li>
+    <li>/dev/null 2>&1 hides both stdout and stderr</li>
+  </ul>
+  </p>
+
+  <p style="font-size: 20px; color: red;">
+  <b>Q: How cmd > /dev/null 2>&1 works?</b>
+</p>
+
+<p>
+  <b>Ans:</b>
+  <ul>
+    <li><b>/dev/null: </b> Redirects stdout (file descriptor 1) of cmd to /dev/null (the “black hole”).</li>
+    <li><b>2>&1: Redirects stderr (file descriptor 2) to where stdout is currently going. Since you already sent stdout to /dev/null,  both stdout and stderr are suppressed. </b></li>
+  </ul>
+</p>
+
