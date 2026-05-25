@@ -46,9 +46,14 @@
   </tr>
 
   <tr>
-    <td><code>Strace ./<binary_name></code></td>
+    <td><code>Strace ./binary_name</code></td>
     <td>Provide details what all system calls a user space program is calling
         e.g strace ./a.out.</td>
+  </tr>
+
+   <tr>
+    <td><code>readelf -d binary_name</code></td>
+    <td>Display list of all .so files on which the given binary is dependent.</td>
   </tr>
   
 </table>
