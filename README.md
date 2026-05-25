@@ -9,7 +9,7 @@
   </tr>
 
   <tr>
-    <td><code>Objdump --source binary_name<br>OR<br>objdump -S binary_name</code></td>
+    <td><code>Objdump --source binary_name<br> OR <br>objdump -S binary_name</code></td>
     <td>Display source code mixed with assembly output.</td>
   </tr>
 
