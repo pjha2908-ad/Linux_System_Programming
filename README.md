@@ -189,6 +189,7 @@
     <td><code>GPT</code></td>
     <td>GUID Partition Table</td>
   </tr>
+</table>
 
 <h3>FAQ</h3>
 <b><p style="font-size: 20px; color: red;">
