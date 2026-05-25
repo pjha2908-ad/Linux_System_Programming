@@ -4,38 +4,53 @@
   <tr>
     <th>Command</th>
     <th>Description</th>
-    <th>Example</th>
   </tr>
 
   <tr>
-    <td><code>ls</code></td>
-    <td>List directory contents</td>
-    <td><code>ls -l</code></td>
+    <td><code>Objdump --source <binary_name></code></td>
+    <td>To see assembly language code for the binary.</td>
   </tr>
 
   <tr>
-    <td><code>cd</code></td>
-    <td>Change directory</td>
-    <td><code>cd /home</code></td>
+    <td><code>ulimit -f</code></td>
+    <td>To query the maximum possible size of files written to by the shell process.</td>
   </tr>
 
   <tr>
-    <td><code>pwd</code></td>
-    <td>Show current directory</td>
-    <td><code>pwd</code></td>
+    <td><code>ulimit -a</code></td>
+    <td>All resource limit. (It's per process not system-wide).</td>
   </tr>
 
   <tr>
-    <td><code>mkdir</code></td>
-    <td>Create new directory</td>
-    <td><code>mkdir test</code></td>
+    <td><code>ulimit -aS</code></td>
+    <td>Display all Soft resource limit values.</td>
   </tr>
 
   <tr>
-    <td><code>rm</code></td>
-    <td>Remove files/directories</td>
-    <td><code>rm file.txt</code></td>
+    <td><code>ulimit-aH</code></td>
+    <td>Display all hard resource limit values.</td>
   </tr>
+
+  <tr>
+    <td><code>meld</code></td>
+    <td>The meld command is used to compare and merge files or directories visually. It’s extremely handy for system programming, code reviews, config diffs, and resolving conflicts.</td>
+  </tr>
+
+  <tr>
+    <td><code>grep -irl</code></td>
+    <td>i : case insensitive
+        r : recursive
+        l : list of file (instead of  matching line) 
+        e.g:
+        grep -irl sys_read include  ---> search sys_read in include dir (recursive, case insensitive, list of files).</td>
+  </tr>
+
+  <tr>
+    <td><code>Strace ./<binary_name></code></td>
+    <td>Provide details what all system calls a user space program is calling
+        e.g strace ./a.out.</td>
+  </tr>
+  
 </table>
 
 
