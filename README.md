@@ -152,6 +152,7 @@
   </tr>
   
 </table>
+
 <h3>Files:</h3>
 <table>
   <tr>
@@ -173,8 +174,9 @@
       </ul>
     </td>
   </tr>
+</table>
 
-<h3>Abbreviation</h3>
+<h3>Abbreviation:</h3>
 <table>
   <tr>
     <th>Abbreviation</th>
