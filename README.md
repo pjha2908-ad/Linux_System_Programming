@@ -2,6 +2,7 @@
 
 <h1>System Programming</h1>
 
+<h3>Command</h3>
 <table>
   <tr>
     <th>Command</th>
@@ -9,7 +10,11 @@
   </tr>
 
   <tr>
-    <td><code>Objdump --source binary_name<br> OR <br>objdump -S binary_name</code></td>
+    <td>
+      <pre><code>Objdump --source binary_name
+      OR
+      objdump -S binary_name</code></pre>
+    </td>
     <td>Display source code mixed with assembly output.</td>
   </tr>
 
@@ -145,7 +150,7 @@
   </tr>
   
 </table>
-
+<h3>Files:</h3>
 <table>
   <tr>
     <th>File</th>
@@ -166,10 +171,11 @@
       </ul>
     </td>
   </tr>
-  
+
+<h3>Abbreviation</h3>
 <table>
   <tr>
-    <th>Abreviation</th>
+    <th>Abbreviation</th>
     <th>Description</th>
   </tr>
   
