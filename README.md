@@ -38,11 +38,7 @@
 
   <tr>
     <td><code>grep -irl</code></td>
-    <td>i : case insensitive
-        r : recursive
-        l : list of file (instead of  matching line) 
-        e.g:
-        grep -irl sys_read include  ---> search sys_read in include dir (recursive, case insensitive, list of files).</td>
+    <td><b>i : </b>bcase insensitive<br><b>r :</b>b recursive<br><b>l :</b>list of file (instead of  matching line) <br><b>e.g:</b>bgrep -irl sys_read include  ---> search sys_read in include dir (recursive, case insensitive, list of files).</td>
   </tr>
 
   <tr>
@@ -54,6 +50,16 @@
    <tr>
     <td><code>readelf -d binary_name</code></td>
     <td>Display list of all .so files on which the given binary is dependent.</td>
+  </tr>
+
+   <tr>
+    <td><code>echo $$</code></td>
+    <td>prints the Process ID (PID) of the current shell.<br>
+    <ul>
+      <li> $ is a special shell variable that always contains the PID of the shell instance you're running. </li>
+      <li> echo $ simply outputs that number.</li>
+    </ul>
+    </td>
   </tr>
   
 </table>
