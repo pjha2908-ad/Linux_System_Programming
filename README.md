@@ -38,7 +38,7 @@
 
   <tr>
     <td><code>grep -irl</code></td>
-    <td><b>i : </b>bcase insensitive<br><b>r :</b>b recursive<br><b>l :</b>list of file (instead of  matching line) <br><b>e.g:</b>bgrep -irl sys_read include  ---> search sys_read in include dir (recursive, case insensitive, list of files).</td>
+    <td><b>i : </b>case insensitive<br><b>r :</b>recursive<br><b>l :</b>list of file (instead of  matching line) <br><b>e.g:</b>bgrep -irl sys_read include  ---> search sys_read in include dir (recursive, case insensitive, list of files).</td>
   </tr>
 
   <tr>
@@ -61,10 +61,31 @@
     </ul>
     </td>
   </tr>
+
+  <tr>
+    <td><code>grep ^b</code></td>
+    <td>^b is a regular expression meaning:<br>
+    <ul>
+      <li> ^ → start of the lineg. </li>
+      <li> b → the line must begin with the letter b.</li>
+    </ul>
+    </td>
+  </tr>
   
 </table>
 
+<table>
+  <tr>
+    <th>File</th>
+    <th>Use</th>
+    <th>Use</th>
+  </tr>
 
+  <tr>
+    <td><code>/etc/security/limits.conf</code></td>
+    <td>Config file for resource limit</td>
+  </tr>
+  
 <table>
   <tr>
     <th>Abreviation</th>
