@@ -1,4 +1,6 @@
-# Linux_command
+# System Programming Linux_command
+
+<h1>System Programming</h1>
 
 <table>
   <tr>
@@ -38,7 +40,7 @@
 
   <tr>
     <td><code>grep -irl</code></td>
-    <td><b>i : </b>case insensitive<br><b>r :</b>recursive<br><b>l :</b>list of file (instead of  matching line) <br><b>e.g:</b>bgrep -irl sys_read include  ---> search sys_read in include dir (recursive, case insensitive, list of files).</td>
+    <td><b>i : </b>case insensitive<br><b>r :</b>recursive<br><b>l :</b>list of file (instead of  matching line) <br><b>e.g:</b>grep -irl sys_read include  ---> search sys_read in include dir (recursive, case insensitive, list of files).</td>
   </tr>
 
   <tr>
@@ -84,6 +86,7 @@
   <tr>
     <td><code>/etc/security/limits.conf</code></td>
     <td>Config file for resource limit</td>
+    <td>set limits on system resources for users or groups.</td>
   </tr>
   
 <table>
@@ -186,3 +189,11 @@
     <td><code>GPT</code></td>
     <td>GUID Partition Table</td>
   </tr>
+
+<h3>FAQ</h3>
+<b><p style="font-size: 20px; color: red;">
+  Q:  What's a core dump?
+</p>
+  Ans:
+</b>
+A core dump is a snapshot of certain dynamic regions (segments) of the process at the time it crashed (technically, it's a snapshot of minimally the data and stack segments). The core dump can be analyzed postmortem using debuggers such as GDB.
