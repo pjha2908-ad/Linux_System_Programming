@@ -138,6 +138,11 @@
       <b>Result: </b>Creates a file named file.bin of size 10 MB
     </td>
   </tr>
+
+  <tr>
+    <td><code>date -d @timestamp </code></td>
+    <td>It would convert the time stamp in human readable format. e.g if from log file timastap you want to convert.</td>
+  </tr>
   
 </table>
 
@@ -366,7 +371,7 @@
   <b>Ans:</b>
   <ul>
     <li><b>/dev/null: </b> Redirects stdout (file descriptor 1) of cmd to /dev/null (the “black hole”).</li>
-    <li><b>2>&1: Redirects stderr (file descriptor 2) to where stdout is currently going. Since you already sent stdout to /dev/null,  both stdout and stderr are suppressed. </b></li>
+    <li><b>2>&1: </b>Redirects stderr (file descriptor 2) to where stdout is currently going. Since you already sent stdout to /dev/null,  both stdout and stderr are suppressed.</li>
   </ul>
 </p>
 
