@@ -192,9 +192,11 @@
 </table>
 
 <h3>FAQ</h3>
+
 <p style="font-size: 20px; color: red;">
   <b>Q: What's a core dump?</b>
 </p>
+
 <p>
   <b>Ans:</b> A core dump is a snapshot of certain dynamic regions (segments) of the process at the time it crashed (technically, it's a snapshot of minimally the data and stack segments). The core dump can be analyzed postmortem using debuggers such as GDB.
 </p>
