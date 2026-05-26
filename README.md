@@ -451,6 +451,7 @@
 </table>
 
 <h3>Flags: </h3>
+
 <table>
   <tr>
     <th>Flag</th>
@@ -464,7 +465,6 @@
       <code>open()</code> system call to request
       <b>synchronous I/O</b>.
       <br><br>
-
       When you open a file with the <code>O_SYNC</code> flag,
       every <code>write()</code> operation becomes blocking.
       The system call returns only after:
@@ -473,7 +473,6 @@
           The data has been physically written to the storage device
           (SSD/HDD).
         </li>
-
         <li>
           The file metadata (inode information such as modification
           time and file size) has also been updated on disk.
@@ -488,18 +487,15 @@
       <b>O_DSYNC</b> (Data Synchronous) is a performance-optimized
       version of <code>O_SYNC</code>.
       <br><br>
-
       While <code>O_SYNC</code> waits for both the
       <b>data</b> and the <b>metadata</b> to be written to disk,
       <code>O_DSYNC</code> waits only for the data itself.
       <br><br>
-
       <ul>
         <li>
           <b>O_SYNC:</b>
           "Don't return until the data and inode details are safe."
         </li>
-
         <li>
           <b>O_DSYNC:</b>
           "Don't return until the data is safe. Metadata updates can wait."
@@ -561,7 +557,6 @@
     <td>
       <code>vm_area_struct</code> is the fundamental structure used to manage a process's virtual memory.
       <br><br>
-
       <b>Key Components</b>
       <ul>
         <li><code>vm_start</code> and <code>vm_end</code> → Memory boundaries</li>
@@ -570,7 +565,6 @@
         <li><code>vm_next</code> and <code>vm_prev</code> → Linked-list navigation</li>
         <li><code>vm_rb</code> → Red-Black tree node for fast lookup</li>
       </ul>
-
       Address belongs to VMA only if:
       <br>
       <code>vm_start &lt;= addr &lt; vm_end</code>
@@ -584,7 +578,6 @@
     <td>
       Describes the complete virtual address space of a process.
       <br><br>
-
       <b>Contains</b>
       <ul>
         <li><code>mmap</code> → Linked list of VMAs</li>
