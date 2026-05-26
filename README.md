@@ -320,6 +320,101 @@
       </ul>
     </td>
   </tr>
+
+  <tr>
+    <td><code>/proc/sys/kernel/pid_max</code></td>
+    <td>Process id max limit.</td>
+  </tr>
+
+  <tr>
+    <td><code>/proc/[PID]/status</code></td>
+    <td>It is a virtual file that provides a human-readable summary of the current status for the process with PID.</td>
+  </tr>
+
+  <tr>
+  <td><code>/proc/&lt;PID&gt;/maps</code></td>
+  <td>
+    The Linux kernel generates a text-based representation of the
+    <b>Virtual Memory Areas (VMAs)</b>.
+  </td>
+</tr>
+
+<tr>
+  <td><code>/proc/&lt;PID&gt;/cmdline</code></td>
+  <td>
+    The command-line arguments of any process can be read via this file.
+  </td>
+</tr>
+
+<tr>
+  <td><code>/proc/&lt;PID&gt;/environ</code></td>
+  <td>
+    Environment list of the process.
+  </td>
+</tr>
+
+<tr>
+  <td><code>/etc/fstab</code></td>
+  <td>
+    The <code>/etc/fstab</code> (file systems table) file is a system
+    configuration file that contains information about all available disks
+    and partitions and indicates how they should be automatically initialized
+    or mounted into the system.
+  </td>
+</tr>
+
+<tr>
+  <td><code>/proc/&lt;PID&gt;/mounts</code></td>
+  <td>
+    Mount points for this process.
+  </td>
+</tr>
+
+<tr>
+  <td><code>/proc/PID/fd/</code></td>
+  <td>
+    The directory <code>/proc/[PID]/fd/</code> contains symbolic links to
+    every file descriptor (FD) currently held open by that process.
+    <br><br>
+
+    FD 0: <b>Standard Input (stdin)</b><br>
+    FD 1: <b>Standard Output (stdout)</b><br>
+    FD 2: <b>Standard Error (stderr)</b>
+  </td>
+</tr>
+
+<tr>
+  <td><code>/proc/PID/task</code></td>
+  <td>
+    The <code>/proc/[PID]/task</code> directory contains a subdirectory
+    for every <b>thread</b> currently belonging to that process.
+    <br><br>
+
+    <b>Structure</b><br>
+
+    Inside <code>/proc/[PID]/task</code>, you will see folders named
+    with TIDs (Thread IDs).
+    <ul>
+      <li>
+        For a single-threaded program, there is only one folder,
+        and its TID will match the PID.
+      </li>
+
+      <li>
+        For multi-threaded programs (e.g., using
+        <code>pthread_create</code>), you will see multiple folders.
+      </li>
+    </ul>
+  </td>
+</tr>
+
+<tr>
+  <td><code>include/uapi/asm-generic/unistd.h</code></td>
+  <td>
+    Information about system calls.
+  </td>
+</tr>
+
 </table>
 
 <h3>Abbreviation:</h3>
