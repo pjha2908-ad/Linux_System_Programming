@@ -299,6 +299,43 @@
       
 </table>
 
+<h3>Gdb commands: </h3><br>
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Use</th>
+  </tr>
+
+  <tr>
+    <td><code>info registers lr</code></td>
+    <td>
+      Return Address isn't always on the stack immediately;
+      it's often stored in the <b>Link Register (lr or x30)</b>.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>x/3i $pc</code></td>
+    <td>
+      Show the next 3 instructions.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>x/i $pc</code></td>
+    <td>
+      You can see the exact assembly instruction at that spot by running this command.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>info registers pc</code></td>
+    <td>
+      Program Counter (PC) register info.
+    </td>
+  </tr>
+</table>
+
 <h3>Files:</h3>
 <table>
   <tr>
@@ -376,7 +413,6 @@
     The directory <code>/proc/[PID]/fd/</code> contains symbolic links to
     every file descriptor (FD) currently held open by that process.
     <br><br>
-
     FD 0: <b>Standard Input (stdin)</b><br>
     FD 1: <b>Standard Output (stdout)</b><br>
     FD 2: <b>Standard Error (stderr)</b>
@@ -389,9 +425,7 @@
     The <code>/proc/[PID]/task</code> directory contains a subdirectory
     for every <b>thread</b> currently belonging to that process.
     <br><br>
-
     <b>Structure</b><br>
-
     Inside <code>/proc/[PID]/task</code>, you will see folders named
     with TIDs (Thread IDs).
     <ul>
@@ -399,7 +433,6 @@
         For a single-threaded program, there is only one folder,
         and its TID will match the PID.
       </li>
-
       <li>
         For multi-threaded programs (e.g., using
         <code>pthread_create</code>), you will see multiple folders.
@@ -415,6 +448,372 @@
   </td>
 </tr>
 
+</table>
+
+<h3>Flags: </h3>
+<table>
+  <tr>
+    <th>Flag</th>
+    <th>Use</th>
+  </tr>
+
+  <tr>
+    <td><code>O_SYNC</code></td>
+    <td>
+      <b>O_SYNC</b> is a file status flag used with the
+      <code>open()</code> system call to request
+      <b>synchronous I/O</b>.
+      <br><br>
+
+      When you open a file with the <code>O_SYNC</code> flag,
+      every <code>write()</code> operation becomes blocking.
+      The system call returns only after:
+      <ol>
+        <li>
+          The data has been physically written to the storage device
+          (SSD/HDD).
+        </li>
+
+        <li>
+          The file metadata (inode information such as modification
+          time and file size) has also been updated on disk.
+        </li>
+      </ol>
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>O_DSYNC</code></td>
+    <td>
+      <b>O_DSYNC</b> (Data Synchronous) is a performance-optimized
+      version of <code>O_SYNC</code>.
+      <br><br>
+
+      While <code>O_SYNC</code> waits for both the
+      <b>data</b> and the <b>metadata</b> to be written to disk,
+      <code>O_DSYNC</code> waits only for the data itself.
+      <br><br>
+
+      <ul>
+        <li>
+          <b>O_SYNC:</b>
+          "Don't return until the data and inode details are safe."
+        </li>
+
+        <li>
+          <b>O_DSYNC:</b>
+          "Don't return until the data is safe. Metadata updates can wait."
+        </li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>O_RSYNC</code></td>
+    <td>
+      <b>O_RSYNC</b> (Read Synchronous) provides synchronization
+      guarantees for <code>read()</code> operations.
+      <br><br>
+      When used with <code>O_SYNC</code> or
+      <code>O_DSYNC</code>, a <code>read()</code> call blocks
+      until pending writes affecting that data are synchronized.
+      <br><br>
+      <ul>
+        <li>
+          <b>With O_DSYNC:</b>
+          Read blocks until data and required metadata are synchronized.
+        </li>
+        <li>
+          <b>With O_SYNC:</b>
+          Read blocks until data and all metadata are synchronized.
+        </li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>O_DIRECT</code></td>
+    <td>
+      <b>O_DIRECT</b> is a Linux-specific <code>open()</code>
+      flag used to bypass the kernel's <b>page cache</b>.
+      <br><br>
+      Data is transferred directly between the user-space buffer
+      and the storage device using DMA (Direct Memory Access),
+      without intermediate kernel buffering.
+    </td>
+  </tr>
+</table>
+
+<h3>Data structure: </h3>
+
+<table>
+  <tr>
+    <th>Data structure / Macro / Function</th>
+    <th>Type</th>
+    <th>Header File</th>
+    <th>Use</th>
+  </tr>
+
+  <tr>
+    <td><code>vm_area_struct</code></td>
+    <td>Structure</td>
+    <td><code>include/linux/mm_types.h</code></td>
+    <td>
+      <code>vm_area_struct</code> is the fundamental structure used to manage a process's virtual memory.
+      <br><br>
+
+      <b>Key Components</b>
+      <ul>
+        <li><code>vm_start</code> and <code>vm_end</code> → Memory boundaries</li>
+        <li><code>vm_page_prot</code> → Memory permissions</li>
+        <li><code>vm_flags</code> → Region attributes</li>
+        <li><code>vm_next</code> and <code>vm_prev</code> → Linked-list navigation</li>
+        <li><code>vm_rb</code> → Red-Black tree node for fast lookup</li>
+      </ul>
+
+      Address belongs to VMA only if:
+      <br>
+      <code>vm_start &lt;= addr &lt; vm_end</code>
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>mm_struct</code></td>
+    <td>Structure</td>
+    <td>-</td>
+    <td>
+      Describes the complete virtual address space of a process.
+      <br><br>
+
+      <b>Contains</b>
+      <ul>
+        <li><code>mmap</code> → Linked list of VMAs</li>
+        <li><code>mm_rb</code> → Red-Black tree root</li>
+        <li><code>pgd</code> → Page Global Directory</li>
+        <li><code>start_code</code>, <code>end_code</code></li>
+        <li><code>start_data</code>, <code>end_data</code></li>
+        <li><code>start_brk</code>, <code>brk</code></li>
+        <li><code>start_stack</code></li>
+        <li><code>mm_users</code> → Shared-user counter</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>char *getenv(const char *name)</code></td>
+    <td>Function</td>
+    <td><code>stdlib.h</code></td>
+    <td>
+      Returns a pointer to the value of an environment variable.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>int putenv(char *string)</code></td>
+    <td>Function</td>
+    <td><code>stdlib.h</code></td>
+    <td>
+      Adds or modifies an environment variable.
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <code>int setenv(const char *name, const char *value, int overwrite)</code>
+    </td>
+    <td>Function</td>
+    <td><code>stdlib.h</code></td>
+    <td>
+      Creates or updates an environment variable.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>int unsetenv(const char *name)</code></td>
+    <td>Function</td>
+    <td><code>stdlib.h</code></td>
+    <td>
+      Removes an environment variable.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>mtrace</code></td>
+    <td>Function</td>
+    <td><code>mcheck.h</code></td>
+    <td>
+      Tracks memory allocation calls to detect memory leaks and invalid frees.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>LD_PRELOAD</code></td>
+    <td>Environment Variable</td>
+    <td>-</td>
+    <td>
+      Forces the dynamic linker to load a specific shared library before others.
+      Used for function interposition or hooking.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>alloca</code></td>
+    <td>Function</td>
+    <td><code>alloca.h</code></td>
+    <td>
+      Allocates memory directly on the stack frame instead of the heap.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>Utsname</code></td>
+    <td>Structure</td>
+    <td><code>sys/utsname.h</code></td>
+    <td>
+      Stores operating system identity information like hostname,
+      kernel version, architecture, etc.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>getpwnam()</code></td>
+    <td>Function</td>
+    <td><code>&lt;pwd.h&gt;</code></td>
+    <td>
+      Retrieves user account information using username.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>struct dirent</code></td>
+    <td>Structure</td>
+    <td><code>&lt;dirent.h&gt;</code></td>
+    <td>
+      Represents a directory entry inside a directory stream.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>stat()</code></td>
+    <td>Function / System Call</td>
+    <td>
+      <code>&lt;sys/stat.h&gt;</code><br>
+      <code>&lt;sys/types.h&gt;</code><br>
+      <code>&lt;unistd.h&gt;</code>
+    </td>
+    <td>
+      Retrieves metadata information about a file.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>struct stat</code></td>
+    <td>Structure</td>
+    <td>
+      <code>&lt;sys/types.h&gt;</code><br>
+      <code>&lt;sys/stat.h&gt;</code><br>
+      <code>&lt;unistd.h&gt;</code>
+    </td>
+    <td>
+      Contains file metadata such as owner, size, inode, permissions, and timestamps.
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <code>size_t strcspn(const char *s, const char *reject)</code>
+    </td>
+    <td>Function</td>
+    <td><code>&lt;string.h&gt;</code></td>
+    <td>
+      Returns the number of characters before the first matching rejected character.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>fsync(int fd)</code></td>
+    <td>Function</td>
+    <td><code>&lt;unistd.h&gt;</code></td>
+    <td>
+      Flushes file data and metadata to disk.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>fdatasync(int fd)</code></td>
+    <td>Function</td>
+    <td><code>&lt;unistd.h&gt;</code></td>
+    <td>
+      Flushes only file data and required metadata to disk.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>sync()</code></td>
+    <td>Function</td>
+    <td><code>&lt;unistd.h&gt;</code></td>
+    <td>
+      Flushes all pending filesystem buffers to disk.
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <code>int setvbuf(FILE *stream, char *buf, int mode, size_t size)</code>
+    </td>
+    <td>Function</td>
+    <td><code>&lt;stdio.h&gt;</code></td>
+    <td>
+      Changes buffering mode of a file stream.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>void setbuf(FILE *stream, char *buf)</code></td>
+    <td>Function</td>
+    <td><code>&lt;stdio.h&gt;</code></td>
+    <td>
+      Simplified interface for controlling stream buffering.
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <code>void setbuffer(FILE *stream, char *buf, size_t size)</code>
+    </td>
+    <td>Function</td>
+    <td><code>&lt;stdio.h&gt;</code></td>
+    <td>
+      Similar to <code>setbuf()</code> but allows custom buffer size.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>STDOUT_FILENO</code></td>
+    <td>Constant</td>
+    <td><code>&lt;unistd.h&gt;</code></td>
+    <td>
+      File descriptor constant for standard output.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>fileno(FILE *stream)</code></td>
+    <td>Function</td>
+    <td><code>&lt;stdio.h&gt;</code></td>
+    <td>
+      Returns the file descriptor associated with a FILE stream.
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>fdopen(int fd, const char *mode)</code></td>
+    <td>Function</td>
+    <td><code>&lt;stdio.h&gt;</code></td>
+    <td>
+      Creates a FILE stream from an existing file descriptor.
+    </td>
+  </tr>
 </table>
 
 <h3>Abbreviation:</h3>
