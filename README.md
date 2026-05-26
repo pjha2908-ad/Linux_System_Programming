@@ -1,4 +1,4 @@
-<img width="400" height="38" alt="image" src="https://github.com/user-attachments/assets/9d13b387-4c16-42d1-ae3b-731b8692e100" /><h1>System Programming</h1>
+<h1>System Programming</h1>
 <h3>Useful Links: </h3>
 <ul>
   <li>https://medium.com/@boutnaru/the-linux-concept-journey-syscalls-system-calls-efcd7703e072</li>
@@ -1219,7 +1219,12 @@
     </li>
     <li><b>Permission Verification: </b>If a VMA is found, the kernel compares the requested action (Read, Write, or Execute)<br>
       against the <b>VMA's permissions</b> (e.g., trying to write to a read-only text segment).</li>
-
+    <li><b>The SIGSEGV Decision: </b></li>
+      <ol>
+        <li><b>Invalid: </b>If the address is not in any VMA, or if the action violates VMA permissions, the kernel sends a <b>SIGSEGV.</b></li>
+        <li><b>Valid: </b>If the address is in a VMA and the action is allowed, the kernel fixes the PTE<br>
+          (by loading data from disk or allocating RAM) and lets the program continue. GNU C Library - Signal Handling</li>
+      </ol>
     <li>We can see VMA detail in <b>/proc/[PID]/maps</b> file.</li>
   </ul>
 </p>
