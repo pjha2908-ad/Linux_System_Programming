@@ -1,10 +1,10 @@
-<h1>System Programming</h1>
+<img width="400" height="38" alt="image" src="https://github.com/user-attachments/assets/9d13b387-4c16-42d1-ae3b-731b8692e100" /><h1>System Programming</h1>
 <h3>Useful Links: </h3>
 <ul>
   <li>https://medium.com/@boutnaru/the-linux-concept-journey-syscalls-system-calls-efcd7703e072</li>
 </ul>
 
-<h3>Command</h3>
+<h3>Command: </h3>
 <table>
   <tr>
     <th>Command</th>
@@ -299,7 +299,7 @@
       
 </table>
 
-<h3>Gdb commands: </h3><br>
+<h3>Gdb commands: </h3>
 <table>
   <tr>
     <th>Command</th>
@@ -1077,7 +1077,7 @@
 
 </table>
 
-<h3>FAQ</h3>
+<h3>Questions:</h3>
 
 <p style="font-size: 20px; color: red;">
   <b>Q: What's a core dump?</b>
@@ -1180,6 +1180,53 @@
   <ul>
     <li><b>/dev/null: </b> Redirects stdout (file descriptor 1) of cmd to /dev/null (the “black hole”).</li>
     <li><b>2>&1: </b>Redirects stderr (file descriptor 2) to where stdout is currently going. Since you already sent stdout to /dev/null,  both stdout and stderr are suppressed.</li>
+  </ul>
+</p>
+
+<p style="font-size: 20px; color: red;">
+  <b>Q: What is sysret?</b>
+</p>
+
+<p>
+  <b>Ans:</b><mark>sysret:</mark>
+  The sysret instruction is the high-speed hardware mechanism used in x86-64 systems to return from a system call (CPL 0) to user space (CPL 3).
+  <b>Key Operations of sysret: </b><br>When the kernel executes sysret, the CPU performs the following actions in a single atomic step:
+  <ul>
+    <li><b>Restores Instruction Pointer: </b>It loads the next instruction address to execute (RIP) directly from the RCX register.</li>
+    <li><b>Restores Processor Flags: </b>It restores the system flags (RFLAGS) from the R11 register.</li>
+    <li><b>Switches Privilege Level: </b>It changes the CPU's current privilege level from Ring 0 (Kernel) back to Ring 3 (User).</li>
+    <li><b>Updates Segment Selectors: </b>It loads the Code Segment (CS) and Stack Segment (SS) registers with fixed values derived from the <b> IA32_STAR Model-Specific Register(MSR)</b>.
+</li>
+  </ul>
+</p>
+
+<p style="font-size: 20px; color: red;">
+  <b>Q: How kernel checks the page access belongs to a memory region the process is allowed to use?</b>
+</p>
+
+<p>
+  <b>Ans:</b>When a <b>Page Fault</b> occurs (because the PTE is missing or invalid), the kernel doesn't immediately crash the program with a SIGSEGV.<br>
+  Instead, it consults a secondary, higher-level map called the <b>Virtual Memory Areas (VMAs).</b><br>
+  While the <b>Page Table</b> is used by the Hardware (CPU), the <b>VMA list</b> is used by the <b>Software (Kernel)</b> to know what the memory should look like.<br>
+  When a process tries to access memory, the kernel validates it using two layers: <br>
+  the <b>Page Table (Hardware level)</b> and the VMA (Software level). Here is the summary of how it checks for a "legal" access:
+  <ul>
+    <li><b>The Trigger: </b>The CPU tries to translate a virtual address using the <b>Page Table Entry (PTE)</b>.<br>
+      If the PTE is missing or has incorrect permissions, a <b>Page Fault</b> is triggered, handing control to the kernel. The Linux Kernel - Memory Management.
+    </li>
+    <li><b>The VMA Lookup: </b> The kernel searches the process’s <b>Virtual Memory Areas (VMAs)</b><br>
+      (a list of "allowed" memory regions like text, data, and stack) to see if the address falls within any valid range. The proc(5) man page -<b>/proc/[pid]/maps</b>
+    </li>
+    <li><b>Permission Verification: </b>If a VMA is found, the kernel compares the requested action (Read, Write, or Execute)<br>
+      against the <b>VMA's permissions</b> (e.g., trying to write to a read-only text segment).
+    </li>
+    <li><b>The SIGSEGV Decision: </b></li>
+      <ol>
+        <li><b>Invalid: </b>If the address is not in any VMA, or if the action violates VMA permissions, the kernel sends a <b>SIGSEGV.</b></li>
+        <li><b>Valid: </b>If the address is in a VMA and the action is allowed, the kernel fixes the PTE<br>
+          (by loading data from disk or allocating RAM) and lets the program continue. GNU C Library - Signal Handling</li>
+      </ol>
+    <li>We can see VMA detail in <b>/proc/[PID]/maps</b> file.</li>
   </ul>
 </p>
 
