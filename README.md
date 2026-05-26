@@ -1218,14 +1218,8 @@
       (a list of "allowed" memory regions like text, data, and stack) to see if the address falls within any valid range. The proc(5) man page -<b>/proc/[pid]/maps</b>
     </li>
     <li><b>Permission Verification: </b>If a VMA is found, the kernel compares the requested action (Read, Write, or Execute)<br>
-      against the <b>VMA's permissions</b> (e.g., trying to write to a read-only text segment).
-    </li>
-    <li><b>The SIGSEGV Decision: </b></li>
-      <ol>
-        <li><b>Invalid: </b>If the address is not in any VMA, or if the action violates VMA permissions, the kernel sends a <b>SIGSEGV.</b></li>
-        <li><b>Valid: </b>If the address is in a VMA and the action is allowed, the kernel fixes the PTE<br>
-          (by loading data from disk or allocating RAM) and lets the program continue. GNU C Library - Signal Handling</li>
-      </ol>
+      against the <b>VMA's permissions</b> (e.g., trying to write to a read-only text segment).</li>
+
     <li>We can see VMA detail in <b>/proc/[PID]/maps</b> file.</li>
   </ul>
 </p>
