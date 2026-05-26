@@ -504,7 +504,7 @@
   <td>
     <b>Application Programming Interface</b>
   </td>
-</tr>
+ </tr>
 
 <tr>
   <td><code>IDT</code></td>
@@ -531,7 +531,6 @@
   <td><code>O_CLOEXEC</code></td>
   <td>
     <b>Close-on-Exec</b><br><br>
-
     It is a flag used when opening a file or setting its properties to
     ensure the file descriptor is automatically closed when the process
     performs an <code>exec()</code> call.
@@ -569,8 +568,7 @@
 <tr>
   <td><code>etext</code></td>
   <td>
-    <b>End of Text</b><br><br>
-
+    <b><mark>End of Text</b></mark><br>
     The first address after the program code (text segment).
   </td>
 </tr>
@@ -578,18 +576,15 @@
 <tr>
   <td><code>edata</code></td>
   <td>
-    <b>End of Data</b><br><br>
-
-    The first address after the initialized global/static variables
-    (data segment).
+    <b><mark>End of Data</b></mark></b><br><br>
+    The first address after the initialized global/static variables (data segment).
   </td>
 </tr>
 
 <tr>
   <td><code>end</code></td>
   <td>
-    <b>End of BSS</b><br><br>
-
+    <b><mark>End of BSS</mark></b><br><br>
     The first address after the uninitialized variables
     (bss segment). This is also the start of the Heap.
   </td>
@@ -599,7 +594,6 @@
   <td><code>PMMU</code></td>
   <td>
     <b>Paged Memory Management Unit</b><br><br>
-
     The PMMU translated each virtual memory address reference and advises
     the kernel of a page fault when a particular virtual memory address
     corresponds to a page that is not resident in RAM.
@@ -610,7 +604,6 @@
   <td><code>PLT</code></td>
   <td>
     <b>Procedure Linkage Table</b><br><br>
-
     The PLT handles finding the real address of C library functions
     in RAM at runtime.
   </td>
@@ -634,7 +627,6 @@
   <td><code>MBR</code></td>
   <td>
     <b>Master Boot Record</b><br><br>
-
     MBR is a legacy partitioning scheme located in the first sector
     (512 bytes) of a hard drive. It contains bootloader code and the
     partition table.
@@ -645,10 +637,8 @@
   <td><code>GPT</code></td>
   <td>
     <b>GUID Partition Table</b><br><br>
-
     GPT is the modern partitioning standard that replaced MBR.
     <br><br>
-
     <b>Why GPT is better than MBR</b>
     <ul>
       <li>Supports disks larger than 2 TB.</li>
@@ -656,7 +646,6 @@
       <li>Stores backup partition tables for recovery.</li>
       <li>Uses CRC32 for integrity checking.</li>
     </ul>
-
     <b>Example</b><br>
     <code>gdisk -l /dev/nvme0n1</code>
   </td>
@@ -666,11 +655,9 @@
   <td><code>UEFI</code></td>
   <td>
     <b>Unified Extensible Firmware Interface</b><br><br>
-
     UEFI is modern firmware software that connects hardware to the OS
     and replaced BIOS.
     <br><br>
-
     <b>Advantages</b>
     <ul>
       <li>Fast booting</li>
@@ -678,7 +665,6 @@
       <li>Secure Boot support</li>
       <li>Modern graphical interface</li>
     </ul>
-
     <b>Check UEFI Mode</b><br>
     <code>ls /sys/firmware/efi</code>
   </td>
@@ -687,8 +673,7 @@
 <tr>
   <td><code>BIOS</code></td>
   <td>
-    <b>Basic Input/Output System</b><br><br>
-
+    Basic Input/Output System<br><br>
     <b>Legacy BIOS Boot Process</b>
     <ul>
       <li>BIOS searches for the MBR.</li>
