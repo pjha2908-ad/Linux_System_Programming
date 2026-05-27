@@ -2,6 +2,7 @@
 <h3>Useful Links: </h3>
 <ul>
   <li>https://medium.com/@boutnaru/the-linux-concept-journey-syscalls-system-calls-efcd7703e072</li>
+  <li>https://education.github.com/git-cheat-sheet-education.pdf</li>
 </ul>
 
 <h3>Command: </h3>
@@ -413,9 +414,9 @@
     The directory <code>/proc/[PID]/fd/</code> contains symbolic links to
     every file descriptor (FD) currently held open by that process.
     <br><br>
-    FD 0: <b>Standard Input (stdin)</b><br>
-    FD 1: <b>Standard Output (stdout)</b><br>
-    FD 2: <b>Standard Error (stderr)</b>
+    <b>FD 0: </b>Standard Input (stdin)<br>
+    <b>FD 1: </b>Standard Output (stdout)<br>
+    <b>FD 2: </b>Standard Error (stderr)
   </td>
 </tr>
 
