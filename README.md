@@ -4,7 +4,8 @@
   <li>https://medium.com/@boutnaru/the-linux-concept-journey-syscalls-system-calls-efcd7703e072</li>
   <li>https://education.github.com/git-cheat-sheet-education.pdf</li>
   <li>https://linux.die.net/man/2/</li>
-  https://linux.die.net/man/5/core
+  <li>https://linux.die.net/man/5/core</li>
+  <li>https://thelearningjourneyebooks.com/ebooks/TheLinuxConceptJourney_v5_April2025.pdf</li>
 </ul>
 
 <h3>Command: </h3>
@@ -1094,6 +1095,19 @@
       <li>The MBR contains bootloader code and partition table.</li>
       <li>BIOS loads the first sector into RAM and executes it.</li>
     </ul>
+  </td>
+</tr>
+
+<tr>
+  <td><code>TOCTOU</code></td>
+  <td>
+    <b>Time Of Check To Time Of Use</b><br><br>
+    TOCTOU is a <b>race condition vulnerability</b> where: <br>
+    <ol>
+      <li>A program checks a condition (e.g., file permissions).</li>
+      <li>Then later uses the <b>result of that check.</b></li>
+      <li>But in between, <b>something changes.</b></li>
+    </ol>
   </td>
 </tr>
 
