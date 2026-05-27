@@ -3,6 +3,8 @@
 <ul>
   <li>https://medium.com/@boutnaru/the-linux-concept-journey-syscalls-system-calls-efcd7703e072</li>
   <li>https://education.github.com/git-cheat-sheet-education.pdf</li>
+  <li>https://linux.die.net/man/2/</li>
+  https://linux.die.net/man/5/core
 </ul>
 
 <h3>Command: </h3>
@@ -296,6 +298,25 @@
   <tr>
     <td><code>ls -d</td>
     <td>list directories themselves, rather than listing the files inside those directories.</td>
+  </tr>
+
+  <tr>
+    <td><code>ctrl+A, press Esc</td>
+    <td>Copy Mode. you can use arrow to move up/down  then press Esc again to exit.</td>
+  </tr>
+
+  <tr>
+    <td><code>ps</td>
+    <td>Displays information about active processes.
+      <ul>
+        <li><b>-L: </b>Displays information about active processes.</li>
+        <li><b>-A: </b> Displays all processes.</li>
+        <li><b>a: </b>Shows processes for all users (not just the current user).</li>
+        <li><b>u: </b>Displays the process's user/owner and additional details in a user-oriented format.</li>
+        <li><b>x: </b>Includes processes that are not attached to a terminal (like daemons).</li>
+        <li><b>Z: </b>display SELinux security context</li>
+      </ul>
+    </td>
   </tr>
       
 </table>
