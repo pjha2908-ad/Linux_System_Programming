@@ -208,7 +208,15 @@
 
   <tr>
     <td><code>pstree </code></td>
-    <td>Display all running processes in a <b>hierarchical tree format.</b></td>
+    <td>Display all running processes in a <b>hierarchical tree format.</b><br>
+      This cmd reveals:
+      <ul>
+        <li>Parent-child process relationships</li>
+        <li>Service hierarchies</li>
+        <li>Background processes</li>
+        <li>Running applications</li>
+      </ul>
+    </td>
   </tr>
 
   <tr>
@@ -253,7 +261,14 @@
 
   <tr>
     <td><code>lsblk</td>
-    <td>see all available block devices and identify your drive.</td>
+    <td>see all available block devices and identify your drive. This command provides a clean overview of:
+      <ul>
+        <li>Disks</li>
+        <li>Partitions</li>
+        <li>Mount points</li>
+        <li>Storage hierarchy</li>
+      </ul>
+    </td>
   </tr>
 
   <tr>
@@ -318,6 +333,128 @@
         <li><b>Z: </b>display SELinux security context</li>
       </ul>
     </td>
+  </tr>
+
+  <tr>
+    <td><code>hostnamectl</td>
+    <td>This provides: 
+      <ul>
+        <li>Hostname</li>
+        <li>Operating system version</li>
+        <li>Kernel information</li>
+        <li>Architecture</li>
+        <li>Virtualization details</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>ip addr</td>
+    <td>This shows: 
+      <ul>
+        <li>Network interfaces</li>
+        <li>Assigned IP addresses</li>
+        <li>Interface states</li>
+        <li>Virtual interfaces</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>ip route</td>
+    <td>This reveals: 
+      <ul>
+        <li>Default gateways</li>
+        <li>Static routes</li>
+        <li>Routing priorities</li>
+        <li>Network paths</li>
+      </ul>
+    </td>
+  </tr>
+
+   <tr>
+    <td><code>systemctl list-units --type=service --state=running</td>
+    <td>This shows: 
+      <ul>
+        <li>Web servers</li>
+        <li>Databases</li>
+        <li>Monitoring agents</li>
+        <li>Security tools</li>
+        <li>Scheduled services</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>df -h</td>
+    <td>This highlights: 
+      <ul>
+        <li>Available capacity</li>
+        <li>Mounted filesystems</li>
+        <li>Partition utilization</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>free -h</td>
+    <td>This provides: 
+      <ul>
+        <li>Total memory</li>
+        <li>Used memory</li>
+        <li>Available memory</li>
+        <li>Swap allocation</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>
+      <ol>
+        <li>crontab -</li>
+        <li>ls /etc/cron*</li>
+      </ol>
+    </td>
+    <td>Automated jobs frequently explain: 
+      <ul>
+        <li>Unexpected file changes</li>
+        <li>Generated reports</li>
+        <li>Cleanup operations</li>
+        <li>Backups</li>
+        <li>Log rotations</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td><code>whoami</td>
+    <td>The <b>whoami</b> command displays the currently logged-in username.</td> 
+  </tr>
+
+  <tr>
+    <td><code>id</td>
+    <td>The <b>id</b> command displays the user ID and group information.
+      <ul>
+        <li><b>id -un :</b> The -un flag is used to print the username.</li>
+      </ul>
+    </td> 
+  </tr>
+
+  <tr>
+    <td><code>cat</td>
+    <td>cat means concatenate.
+      <ol>
+        <li><b>cat > file.txt :</b> --> Create a File Using cat.<br>
+          <b>Now type:</b><br>Hello Linux<br>Learning commands<br><b>Press:</b><br>
+          CTRL + D<br>This saves the file.
+        </li>
+        <li><mark>cat -n file.txt</mark>--> View Line Numbers</li>
+        <li><mark>cat -s file.txt</mark>--> Remove Empty Lines While Viewing</li>
+        <li><mark>cat -E file.txt</mark>--> Show End of Each Line</li>
+        <li><mark>cat file1.txt file2.txt</mark>--> Combine Multiple Files</li>
+        <li><mark>cat file1.txt file2.txt  > combined.txt</mark>-->  save combined output</li>
+      </ol>
+    </td> 
   </tr>
       
 </table>
