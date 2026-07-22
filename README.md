@@ -456,7 +456,157 @@
       </ol>
     </td> 
   </tr>
-      
+
+  <tr>
+    <td>ss -tulpn</td>
+    <td>A quick overview of listening services.<br>
+      <b>ss: Inspect the Network Stack, Not Just Open Ports</b>
+    </td>
+  </tr>
+
+  <tr>
+    <td>ss -ant</td>
+    <td>Investigate established TCP sessions.<br>
+      <b>Useful during:</b><br>
+      <ul>
+        <li>Unexpected outbound connections</li>
+        <li>Service verification</li>
+        <li>Connection leak investigations</li>
+        <li>Incident response</li>
+        <li>Network troubleshooting</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>lsof -p&lt;PID&gt;</td>
+    <td>List of files opened by a process.</td>
+  </tr>
+
+  <tr>
+    <td>lsof -i</td>
+    <td>Show all network connections.<br>
+      <b>lsof -i :8080 --></b>Show processes listening on the port 8080<br>
+      <b>lsof -iTCP -sTCP:LISTEN --></b>Show listening TCP ports only.
+    </td>
+  </tr>
+
+  <tr>
+    <td>lsof +D /path/to/directory</td>
+    <td>Find which process is using a directory.</td>
+ </tr>
+
+ <tr>
+   <td>lsof -t -i :8080<br>
+     kill -9 $(lsof -t -i :8080)
+   </td>
+   <td>To find the process using port 8080 and kill it.</td>
+ </tr>
+
+ <tr>
+   <td>lsof | grep deleted</td>
+   <td>Deleted log files may continue consuming disk space while a running process still holds an open file descriptor.</td>
+ </tr>
+
+ <tr>
+   <td>journalctl -u nginx</td>
+   <td>Systems using systemd centralize logs through the system journal.<br>
+     Instead of searching individual files, query by service
+   </td>
+ </tr>
+
+ <tr>
+   <td>journalctl --since "30 minutes ago"</td>
+   <td>Recent activity</td>
+ </tr>
+
+ <tr>
+   <td>journalctl -b</td>
+   <td>Current boot</td>
+ </tr>
+
+ <tr>
+   <td>vmstat</td>
+   <td>Shows average system statistics since the last boot<br>
+     <ul>
+       <li>	vmstat -s      # Memory and event statistics</li>
+       <li>vmstat -d       # Disk statistics</li>
+       <li>vmstat -a       # Active/inactive memory</li>
+       <li>vmstat -t 1 5   # Add timestamp</li>
+       <li>vmstat -w       # Wide output</li>
+     </ul>
+   </td>
+ </tr>
+
+ <tr>
+   <td>vmstat 1</td>
+   <td>Refreshes statistics every 1 second.</td>
+ </tr>
+
+ <tr>
+   <td>vmstat 1 5</td>
+   <td>Displays 5 samples at 1-second intervals.</td>
+ </tr>
+
+ <tr>
+   <td>find /var/log -mtime -1</td>
+   <td>Locate recently modified files.</td>
+ </tr>
+
+ <tr>
+   <td>find / -type f -size +500M</td>
+   <td>Search for files exceeding a specific size.</td>
+ </tr>
+
+ <tr>
+   <td>find /home -user alice</td>
+   <td>Identify files owned by a specific user.</td>
+ </tr>
+
+ <tr>
+   <td>xargs</td>
+   <td>xargs transforms that output into input for another command.<br>
+     <b>e.g<br>
+       <mark>find . -name "*.log" | xargs grep "ERROR"</mark>
+     </b>
+   </td>
+ </tr>
+
+ <tr>
+   <td>find . -type d -empty | xargs rmdir</td>
+   <td>remove empty directories.</td>
+ </tr>
+
+ <tr>
+   <td>tee</td>
+   <td>tee duplicates data streams.<br>
+   <b>e.g.<br>
+     <mark>journalctl -u nginx | tee errors.log</mark><br></b>
+     The log appears on the terminal while simultaneously being written to a file.
+   </td>
+ </tr>
+
+ <tr>
+   <td>watch</td>
+   <td>Continuous Observation.<br>
+     <b>e.g.</b><br>
+     watch -n 2 "ss -ant" <br>
+     OR<br>watch -n 1 "free -h"<br>
+     The command executes automatically at fixed intervals.
+   </td>
+ </tr>
+
+ <tr>
+   <td>diff</td>
+   <td>Compare two files.<br><b>e.g.</b><br>
+     <mark><b>diff nginx.conf nginx.conf.backup</b></mark>
+   </td>
+ </tr>
+
+ <tr>
+   <td>env</td>
+   <td>Display the current execution environment.</td>
+ </tr>
 </table>
 
 <h3>Gdb commands: </h3>
