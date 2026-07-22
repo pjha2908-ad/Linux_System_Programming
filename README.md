@@ -1401,7 +1401,8 @@
 
 </table>
 
-<img width="720" height="1080" alt="image" src="https://github.com/user-attachments/assets/546b7431-5317-436d-904a-550d858cef93" />
+<img width="720" height="954" alt="linux_filesystem" src="https://github.com/user-attachments/assets/5352d5f6-4f73-43f7-abbe-1b9cdbb9525f" />
+
 
 <h3>Questions:</h3>
 
