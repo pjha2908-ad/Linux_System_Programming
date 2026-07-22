@@ -479,7 +479,7 @@
   </tr>
 
   <tr>
-    <td><code>lsof -p&lt;PID&gt;</code></td>
+    <td><code>lsof -p &lt;PID&gt;</code></td>
     <td>List of files opened by a process.</td>
   </tr>
 
@@ -498,7 +498,7 @@
 
  <tr>
    <td><code>lsof -t -i :8080<br>
-     kill -9 $(lsof -t -i :8080)
+   kill -9 $(lsof -t -i :8080)
    </code>
    </td>
    <td>To find the process using port 8080 and kill it.</td>
