@@ -458,7 +458,7 @@
   </tr>
 
   <tr>
-    <td>ss -tulpn</td>
+    <td><code>ss -tulpn</code></td>
     <td>A quick overview of listening services.<br>
       <b>ss: Inspect the Network Stack, Not Just Open Ports</b>
     </td>
