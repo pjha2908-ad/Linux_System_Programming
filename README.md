@@ -427,12 +427,12 @@
   </tr>
 
   <tr>
-    <td><code>whoami</td>
+    <td><code>whoami</code></td>
     <td>The <b>whoami</b> command displays the currently logged-in username.</td> 
   </tr>
 
   <tr>
-    <td><code>id</td>
+    <td><code>id</code></td>
     <td>The <b>id</b> command displays the user ID and group information.
       <ul>
         <li><b>id -un :</b> The -un flag is used to print the username.</li>
@@ -465,7 +465,7 @@
   </tr>
 
   <tr>
-    <td>ss -ant</td>
+    <td><code>ss -ant</code></td>
     <td>Investigate established TCP sessions.<br>
       <b>Useful during:</b><br>
       <ul>
@@ -479,12 +479,12 @@
   </tr>
 
   <tr>
-    <td>lsof -p&lt;PID&gt;</td>
+    <td><code>lsof -p&lt;PID&gt;</code></td>
     <td>List of files opened by a process.</td>
   </tr>
 
   <tr>
-    <td>lsof -i</td>
+    <td><code>lsof -i</code></td>
     <td>Show all network connections.<br>
       <b>lsof -i :8080 --></b>Show processes listening on the port 8080<br>
       <b>lsof -iTCP -sTCP:LISTEN --></b>Show listening TCP ports only.
@@ -492,41 +492,42 @@
   </tr>
 
   <tr>
-    <td>lsof +D /path/to/directory</td>
+    <td><code>lsof +D /path/to/directory</code></td>
     <td>Find which process is using a directory.</td>
  </tr>
 
  <tr>
-   <td>lsof -t -i :8080<br>
+   <td><code>lsof -t -i :8080<br>
      kill -9 $(lsof -t -i :8080)
+   </code>
    </td>
    <td>To find the process using port 8080 and kill it.</td>
  </tr>
 
  <tr>
-   <td>lsof | grep deleted</td>
+   <td><code>lsof | grep deleted</code></td>
    <td>Deleted log files may continue consuming disk space while a running process still holds an open file descriptor.</td>
  </tr>
 
  <tr>
-   <td>journalctl -u nginx</td>
+   <td><code>journalctl -u nginx</code></td>
    <td>Systems using systemd centralize logs through the system journal.<br>
      Instead of searching individual files, query by service
    </td>
  </tr>
 
  <tr>
-   <td>journalctl --since "30 minutes ago"</td>
+   <td><code>journalctl --since "30 minutes ago"</code></td>
    <td>Recent activity</td>
  </tr>
 
  <tr>
-   <td>journalctl -b</td>
+   <td><code>journalctl -b</code></td>
    <td>Current boot</td>
  </tr>
 
  <tr>
-   <td>vmstat</td>
+   <td><code>vmstat</code></td>
    <td>Shows average system statistics since the last boot<br>
      <ul>
        <li>	vmstat -s      # Memory and event statistics</li>
@@ -539,32 +540,32 @@
  </tr>
 
  <tr>
-   <td>vmstat 1</td>
+   <td><code>vmstat 1</code></td>
    <td>Refreshes statistics every 1 second.</td>
  </tr>
 
  <tr>
-   <td>vmstat 1 5</td>
+   <td><code>vmstat 1 5</code></td>
    <td>Displays 5 samples at 1-second intervals.</td>
  </tr>
 
  <tr>
-   <td>find /var/log -mtime -1</td>
+   <td><code>find /var/log -mtime -1</code></td>
    <td>Locate recently modified files.</td>
  </tr>
 
  <tr>
-   <td>find / -type f -size +500M</td>
+   <td><code>find / -type f -size +500M</code></td>
    <td>Search for files exceeding a specific size.</td>
  </tr>
 
  <tr>
-   <td>find /home -user alice</td>
+   <td><code>find /home -user alice</code></td>
    <td>Identify files owned by a specific user.</td>
  </tr>
 
  <tr>
-   <td>xargs</td>
+   <td><code>xargs</code></td>
    <td>xargs transforms that output into input for another command.<br>
      <b>e.g<br>
        <mark>find . -name "*.log" | xargs grep "ERROR"</mark>
@@ -573,12 +574,12 @@
  </tr>
 
  <tr>
-   <td>find . -type d -empty | xargs rmdir</td>
+   <td><code>find . -type d -empty | xargs rmdir</code></td>
    <td>remove empty directories.</td>
  </tr>
 
  <tr>
-   <td>tee</td>
+   <td><code>tee</code></td>
    <td>tee duplicates data streams.<br>
    <b>e.g.<br>
      <mark>journalctl -u nginx | tee errors.log</mark><br></b>
@@ -587,7 +588,7 @@
  </tr>
 
  <tr>
-   <td>watch</td>
+   <td><code>watch</code></td>
    <td>Continuous Observation.<br>
      <b>e.g.</b><br>
      watch -n 2 "ss -ant" <br>
@@ -597,14 +598,14 @@
  </tr>
 
  <tr>
-   <td>diff</td>
+   <td><code>diff</code></td>
    <td>Compare two files.<br><b>e.g.</b><br>
      <mark><b>diff nginx.conf nginx.conf.backup</b></mark>
    </td>
  </tr>
 
  <tr>
-   <td>env</td>
+   <td><code>env</code></td>
    <td>Display the current execution environment.</td>
  </tr>
 </table>
