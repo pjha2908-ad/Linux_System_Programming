@@ -1404,6 +1404,8 @@
 <h3>Linux File System: </h3><br>
 <img width="720" height="954" alt="linux_filesystem" src="https://github.com/user-attachments/assets/5352d5f6-4f73-43f7-abbe-1b9cdbb9525f" />
 
+<img width="720" height="480" alt="file_directory" src="https://github.com/user-attachments/assets/47d19431-b8c0-45c4-9381-049f6bc4e612" />
+
 <h3>Questions:</h3>
 
 <p style="font-size: 20px; color: red;">
