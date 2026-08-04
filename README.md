@@ -6,6 +6,7 @@
   <li>https://linux.die.net/man/2/</li>
   <li>https://linux.die.net/man/5/core</li>
   <li>https://thelearningjourneyebooks.com/ebooks/TheLinuxConceptJourney_v5_April2025.pdf</li>
+  <li>https://medium.com/write-a-catalyst/the-complete-linux-commands-cheat-sheet-for-devops-engineers-part-1-abcd6e3b33b6</li>
 </ul>
 
 <h3>Command: </h3>
@@ -607,6 +608,57 @@
  <tr>
    <td><code>env</code></td>
    <td>Display the current execution environment.</td>
+ </tr>
+
+ <tr>
+   <td>ps -eo pid,user,%cpu,%mem,cmd --sort=-%cpu | head</td>
+   <td>Details to identifies which process is consuming CPU.</td>
+ </tr>
+
+ <tr>
+   <td>ps -eo pid,state,cmd</td>
+   <td>Process state
+     <ul>
+       <li>	R Running</li>
+       <li>S Sleeping </li>
+	     <li>D Uninterruptible sleep</li>
+	     <li>Z Zombie</li>
+     </ul>
+   </td>
+ </tr>
+
+ <tr>
+   <td>iptables -L <br>OR<br>nft list ruleset</td>
+   <td>Confirm firewall rules.</td>
+ </tr>
+
+ <tr>
+   <td>uptime</td>
+   <td>uptime is a Linux command that shows how long the system has been running, along with load averages.</td>
+ </tr>
+
+ <tr>
+   <td>swapon --show</td>
+   <td>
+     <b><mark>swapon --show</mark></b> displays the system's active swap devices/files and their usage.<br>
+     <ul>
+       <li><b>NAME: </b>Swap file or partition</li>
+       <li><b>TYPE: </b>file or partition</li>
+       <li><b>SIZE: </b>Total swap size</li>
+       <li><b>USED: </b>Currently used swap</li>
+       <li><b>PRIO: </b>Swap priority</li>
+     </ul>
+   </td>
+ </tr>
+
+ <tr>
+   <td>du -sh *</td>
+   <td>Disk usage inside directories.</td>
+ </tr>
+
+ <tr>
+   <td>dig google.com</td>
+   <td>DNS detail</td>
  </tr>
 </table>
 
