@@ -551,7 +551,9 @@
  </tr>
 
  <tr>
-   <td><code>journalctl -k<br>OR<br>dmesg -T</code></td>
+   <td><code>journalctl -k<br>
+	   OR<br>
+	dmesg -T</code></td>
    <td>Inspect kernel activity.</td>
  </tr>
 
