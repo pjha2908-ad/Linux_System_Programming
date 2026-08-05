@@ -513,7 +513,8 @@
  <tr>
    <td><code>journalctl -u nginx</code></td>
    <td>Systems using systemd centralize logs through the system journal.<br>
-     Instead of searching individual files, query by service
+     Instead of searching individual files, query by service.<br>
+	 <mark>journalctl -u nginx --since "2026-07-10 13:30"  --></mark> Instead of opening individual log files, reconstruct the timeline surrounding the incident.
    </td>
  </tr>
 
@@ -525,6 +526,33 @@
  <tr>
    <td><code>journalctl -b</code></td>
    <td>Current boot</td>
+ </tr>
+
+ <tr>
+   <td><code>journalctl -b -1</code></td>
+   <td>Your computer crashed. Maybe it froze and you held the power button. Maybe the screen went black. Maybe it rebooted by itself with no warning.<br>
+     <b>The -b flag filters by boot. -1 means the previous boot, the one that ended in the crash.</b>This shows everything the system logged during that session,<br> from startup to the last entry before it went down.
+   </td>
+ </tr>
+
+ <tr>
+   <td><code>journalctl -b -1 -e </code></td>
+   <td>The output is long. Start at the end, which is where the crash happened.</td>
+ </tr>
+
+ <tr>
+   <td><code>journalctl -xe</code></td>
+   <td>View the system journal.</td>
+ </tr>
+
+ <tr>
+   <td><code>journalctl -f</code></td>
+   <td>Follow logs live.</td>
+ </tr>
+
+ <tr>
+   <td><code>journalctl -k<br>OR<br>dmesg -T</code></td>
+   <td>Inspect kernel activity.</td>
  </tr>
 
  <tr>
@@ -611,12 +639,12 @@
  </tr>
 
  <tr>
-   <td>ps -eo pid,user,%cpu,%mem,cmd --sort=-%cpu | head</td>
+   <td><code>ps -eo pid,user,%cpu,%mem,cmd --sort=-%cpu | head</code></td>
    <td>Details to identifies which process is consuming CPU.</td>
  </tr>
 
  <tr>
-   <td>ps -eo pid,state,cmd</td>
+   <td><code>ps -eo pid,state,cmd</code></td>
    <td>Process state
      <ul>
        <li>	R Running</li>
@@ -628,17 +656,17 @@
  </tr>
 
  <tr>
-   <td>iptables -L <br>OR<br>nft list ruleset</td>
+   <td><code>iptables -L <br>OR<br>nft list ruleset</code></td>
    <td>Confirm firewall rules.</td>
  </tr>
 
  <tr>
-   <td>uptime</td>
+   <td><code>uptime</code></td>
    <td>uptime is a Linux command that shows how long the system has been running, along with load averages.</td>
  </tr>
 
  <tr>
-   <td>swapon --show</td>
+   <td><code>swapon --show</code></td>
    <td>
      <b><mark>swapon --show</mark></b> displays the system's active swap devices/files and their usage.<br>
      <ul>
@@ -652,13 +680,43 @@
  </tr>
 
  <tr>
-   <td>du -sh *</td>
+   <td><code>du -sh *</code></td>
    <td>Disk usage inside directories.</td>
  </tr>
 
  <tr>
-   <td>dig google.com</td>
+   <td><code>dig google.com</code></td>
    <td>DNS detail</td>
+ </tr>
+
+ <tr>
+   <td><code>sudo apt autoremove</code></td>
+   <td>Remove unused packages.</td>
+ </tr>
+
+ <tr>
+   <td><code>sudo apt clean</code></td>
+   <td>Clear package cache.</td>
+ <tr>
+
+ <tr>
+   <td><code>cat /proc/sys/fs/file-nr</code></td>
+   <td>reveals system-wide file descriptor usage.</td>
+ </tr>
+
+ <tr>
+   <td><code>iostat -xz 1</code></td>
+   <td>shows storage saturation.<br><mark><b>%util 99.8</b></mark></td>
+ </tr>
+
+ <tr>
+   <td><code>ausearch -ts recent</code></td>
+   <td>Search recent activity.</td>
+ </tr>
+
+ <tr>
+   <td><code>ausearch -f /etc/nginx/nginx.conf</code></td>
+   <td>Investigate modifications to critical files.</td>
  </tr>
 </table>
 
@@ -808,6 +866,18 @@
   <td><code>include/uapi/asm-generic/unistd.h</code></td>
   <td>
     Information about system calls.
+  </td>
+</tr>
+
+<tr>
+  <td><code>/proc/sys/vm/swappiness</code></td>
+  <td>Linux decides <b>how aggressively</b> to use swap using a value called swampiness.<br>
+    <ul>
+	  <li><b>Lower it:</b></li><br>sudo sysctl vm.swappiness=10
+	  <li><b>Make it permanent:</b></li><br>sudo nano /etc/sysctl.conf
+	  <li><b>Add:</b></li><br>vm.swappiness=10
+	  <li><b>This tells Linux:</b></li><br>“Use RAM first. Touch swap only when necessary.”
+	</ul>
   </td>
 </tr>
 
