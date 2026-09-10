@@ -781,7 +781,7 @@
  </tr>
 
  <tr>
-	 <td>wget</td>
+	 <td><code>wget</code></td>
 	 <td>
 		 wget downloads files from the internet. It is simple and script-friendly.<br><b>Options:</b><br>
 		 <ol>
@@ -811,7 +811,7 @@
  </tr>
 
  <tr>
-	 <td>nslookup</td>
+	 <td><code>nslookup</code></td>
 	 <td>nslookup checks DNS resolution. If a domain is not opening, this command helps you check whether DNS is working. <br>
 	 	<b>Options:</b><br>
 		 <ol>
@@ -827,7 +827,7 @@
  </tr>
 
  <tr>
-	 <td>traceroute google.com<br>OR<br>tracepath google.com</td>
+	 <td><code>traceroute google.com<br>OR<br>tracepath google.com</code></td>
 	 <td>Where exactly is the packet dying?<br>What it shows:<br>
 		 <ul>
 			 <li>All hops between server and destination</li>
@@ -838,7 +838,7 @@
  </tr>
 
  <tr>
-	 <td>^old^new</td>
+	 <td><code>^old^new</code></td>
 	 <td>Fix Typos Instantly. Instead of pressing up and manually editing it, use the ^old^new substitution trick:<br>
 	 <b>e.g:</b><br>
 		 git chekcout main<br>^chekcout^checkout<br>This replaces chekcout with checkout in the last command and runs it immediately.
@@ -846,39 +846,39 @@
  </tr>
 
  <tr>
- 	<td>last</td>
+ 	<td><code>last</code></td>
 	<td>This shows a list of every user who has logged in, when they logged in, where they logged in from, and how long the session lasted. The most recent entries appear at the top.
 	</td>
  </tr>
 
  <tr>
-	 <td>chmod u-w &lt;folder/filename&gt;</td>
+	 <td><code>chmod u-w &lt;folder/filename&gt;</code></td>
 	 <td>Remove owner write permission.</td>
  </tr>
  
  <tr>
-	 <td>chmod g+w &lt;folder/filename&gt;</td>
+	 <td><code>chmod g+w &lt;folder/filename&gt;</code></td>
 	 <td>Add group write permission.</td>
  </tr>
  <tr>
-	 <td>chmod o+w,o-rx &lt;folder/filename&gt;</td>
+	 <td><code>chmod o+w,o-rx &lt;folder/filename&gt;</code></td>
 	 <td>Modify others.</td>
  </tr>
 
  <tr>
-	 <td>chown -Rv sachin.market data2<br>chmod -Rv o+w,o-r data2</td>
+	 <td><code>chown -Rv sachin.market data2<br>chmod -Rv o+w,o-r data2</code></td>
 	 <td>Recursive Changes.<br><mark>-R =</mark>recursive<br>
 	 	<mark>-v = </mark>verbose
 	 </td>
  </tr>
 
  <tr>
-	 <td>timedatectl</td>
+	 <td><code>timedatectl</code></td>
 	 <td>Check the current time zone</td>
  </tr>
 
  <tr>
- 	<td>rsync</td>
+ 	<td><code>rsync</code></td>
 	<td>rsync is a powerful file synchronization and copy tool commonly used on Linux/macOS. It transfers only the differences between source and destination, making it much faster<br> than repeated cp or scp operations.<br>
 		<mark><b>rsync [options] source destination</b></mark><br>
 		<mark><b>-a               :</b></mark> Archive mode (preserve permissions, timestamps, symlinks<br>
@@ -930,7 +930,7 @@
 			<li><b>Creates dir2/dir1/</b><br>
 				<mark>rsync -av dir1 dir2</mark>
 			</li>
-			<li><b> Copies the contents of dir1 into dir2.</b>
+			<li><b> Copies the contents of dir1 into dir2.</b><br>
 				<mark>rsync -av dir1/ dir2</mark>
 			</li>
 		</ol>
@@ -938,7 +938,7 @@
  </tr>
 
 <tr>
-	<td>mpstat</td>
+	<td><code>mpstat</code></td>
 	<td><b>CPU statistics since boot.<br>
 		Example:</b><br>
 		<ol>
@@ -974,6 +974,97 @@
 				<td>Software interrupt handling</td>
 			</tr>
 		</table>
+	</td>
+</tr>
+
+<tr>
+	<td><code>sar -u 1 5</code></td>
+	<td>
+		<ul>
+			<li><b>sar →</b>System Activity Reporter (part of the sysstat package).</li>
+			<li><b>-u  →</b>Report CPU utilization.</li>
+			<li><b>1   →</b>Sample every <b>1 second.</b></li>
+			<li><b>5   →</b>Collect <b>5 samples.</b></li><br>
+		</ul>
+		<b>So you'll get CPU statistics every second for 5 seconds.<br>Key columns:</b><br>
+		<ul>
+			<li><b>%user        →</b>CPU time spent running user applications.</li>
+			<li><b>%system      →</b>CPU time spent in the kernel.</li>
+			<li><b>%iowait      →</b>CPU waiting for disk/network I/O.</li>
+			<li><b>%idle        →</b>Idle CPU time.</li><br>
+		</ul>
+		<b>Useful variants:</b><br>
+		<b>sar -u ALL 1 5</b>             # per-CPU statistics
+		<b>sar -q 1 5</b>                 # run queue/load averages
+		<b>sar -r 1 5</b>                 # memory statistics
+		<b>sar -n DEV 1 5</b>             # network interface statistics<br>
+		<b>A common quick check on a server is:</b><br>
+		<mark>sar -u 1 5</mark><br>
+		If <b>%idle</b> is very low and <b>%user</b> or <b>%system</b> is high, the CPU is busy. If <b>%iowait</b> is high, the bottleneck is often storage rather than CPU.
+	</td>
+</tr>
+
+<tr>
+	<td><code>smem</code></td>
+	<td><b>smem</b> is a Linux memory reporting tool that provides a more accurate view of memory usage than tools like ps, top, or free because it accounts for <b>shared memory</b> between processes.<br>
+		It reports memory using three important metrics: <b>RSS, USS,</b> and <b>PSS</b>.<br>
+		<b>Useful Commands:</b><br>
+		<ol>
+			<li><b>smem -r           --></b> Short by Largest memory consumers first.</li>
+			<li><b>smem -k           --></b> Human-readable units</li>
+			<li><b>smem -s rss -r    --></b> Sort by RSS</li>
+			<li><b>smem -s uss -r    --></b> Sort by USS</li>
+			<li><b>smem -u           --></b> Show memory usage by user</li>
+			<li><b>smem -w           --></b> System-wide summary</li>
+			<li><b>sudo smem -tk     --></b> This shows total memory usage with human-readable units and is useful when investigating memory pressure or identifying the biggest memory consumers on a Linux system.</li>
+		</ol>
+	</td>
+</tr>
+
+<tr>
+	<td><code>sync && echo 3 | sudo tee /proc/sys/vm/drop_caches</code></td>
+	<td>Clear the page cache (rarely needed, but useful as an emergency valve). Treat this as temporary relief, not a fix — the cache refills quickly,<br>
+		and clearing it can briefly make things slower rather than faster.
+	</td>
+</tr>
+
+<tr>
+	<td><code>rg (ripgrep)</code>
+		<ol>
+			<li>rg &lt;word_to_search&gt;<br>OR<br></li>
+			<li>rg "&lt;phrase to search&gt;"</li>
+		</ol>
+	</td>
+	<td>To search for the given word in the current directory.<br>
+		<ul>
+			<li>faster than "grep -r"</li>
+			<li>Colored output</li>
+			<li>Recursive by default</li>
+			<li>Skips binary files automatically</li>
+		</ul>
+	</td>
+</tr>
+
+<tr>
+	<td><code>xdg-open &lt;file-or-url&gt;</code></td>
+	<td>xdg-open is a Linux command that opens a file or URL using the system's default application. e.g pdf in adobe pdf reader etc.</td>
+</tr>
+
+<tr>
+	<td><code>echo "your-command-here" | at 15:30</code></td>
+	<td>This schedules your-command-here to run once, at 3:30pm today. No file to edit. No recurring entry to remember to delete afterward. It runs once, then it’s gone.</td>
+</tr>
+
+<tr>
+	<td><code>echo "notify-send 'Reminder' 'Time to leave for your meeting'" | at 14:00</code></td>
+	<td>This sends a desktop notification, but only once, at exactly 2pm. Nothing repeats tomorrow. Nothing lingers in a schedule file waiting to be cleaned up later.</td>
+</tr>
+
+<tr>
+	<td><code>comm -12 file1.txt file2.txt</code></td>
+	<td>Finds Every Line Two Files Have in Common.<br>
+		<b>comm</b> compares two files, line by line, and organizes the results into three possible categories. Lines only in the first file. Lines only in the second file. Lines found in both.<br>
+		The <b>-12</b> part tells comm to hide the first two categories, showing you only the third, the lines both files actually share.
 	</td>
 </tr>
 </table>
