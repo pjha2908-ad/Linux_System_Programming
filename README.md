@@ -871,6 +871,111 @@
 	 	<mark>-v = </mark>verbose
 	 </td>
  </tr>
+
+ <tr>
+	 <td>timedatectl</td>
+	 <td>Check the current time zone</td>
+ </tr>
+
+ <tr>
+ 	<td>rsync</td>
+	<td>rsync is a powerful file synchronization and copy tool commonly used on Linux/macOS. It transfers only the differences between source and destination, making it much faster<br> than repeated cp or scp operations.<br>
+		<mark><b>rsync [options] source destination</b></mark><br>
+		<mark><b>-a               :</b></mark> Archive mode (preserve permissions, timestamps, symlinks<br>
+		<mark><b>-v               :</b></mark> Verbose output
+		<mark><b>-z               :</b></mark> Compress data during transfer
+		<mark><b>                 :</b></mark> Human-readable sizes
+		<mark><b>-P               :</b></mark> Show progress and allow resume
+		<mark><b>--delete  	      :</b></mark> Remove files not present in source
+		<mark><b>--dry-run        :</b></mark> Preview changes only
+		<mark><b>--include='*/'   :</b></mark> It is an rsync filter rule that includes all directories in the file selection process. It's commonly used together with --exclude='*' <br>
+			when you want to copy only certain files but still allow rsync to traverse the directory tree.<br>
+		<b>Example:</b><br>
+		<mark>rsync -av \<br>
+			--include='*/' \<br>
+			--include='*.txt' \<br>
+			--exclude='*' \<br>
+			src/ dest/
+		</mark><br><b>Meaning:</b><br>
+		<ol>
+			<li><b>--include='*/' →</b>include all directories.</li>
+			<li><b>--include='*.txt' →</b> include .txt files</li>
+			<li><b>--exclude='*' →</b>exclude everything else.</li><br>
+		</ol>
+		<b>Another common pattern:</b><br>
+			<mark>rsync -av \<br>
+           --include='*/' \<br>
+           --include='*.c' \<br>
+           --include='*.h' \<br>
+           --exclude='*' \<br>
+           project/ backup/</mark><br>
+		<b>This copies only C source and header files while preserving the directory structure.</b><br>
+		<b>Common examples:</b><br>
+		<ol>
+			<li><b>Copy a directory locally</b><br>
+				<mark>rsync -av ~/src/ ~/backup/src/</mark>
+			</li>
+			<li><b>Copy to a remote server</b><br>
+				<mark>rsync -avz ~/project/ user@server:/home/user/project/</mark>
+			</li>
+			<li><b>Copy from a remote server</b><br>
+				<mark>rsync -avz user@server:/var/logs/ ./logs/</mark>
+			</li>
+			<li><b>Preview changes without copying</b><br>
+				<mark>rsync -av --dry-run ~/src/ ~/backup/src/</mark>
+			</li>
+			<li><b>Mirror source to destination (delete extra files)</b><br>
+				<mark>rsync -av --delete ~/src/ ~/backup/src/</mark>
+			</li>
+			<li><b>Creates dir2/dir1/</b><br>
+				<mark>rsync -av dir1 dir2</mark>
+			</li>
+			<li><b> Copies the contents of dir1 into dir2.</b>
+				<mark>rsync -av dir1/ dir2</mark>
+			</li>
+		</ol>
+	</td>
+ </tr>
+
+<tr>
+	<td>mpstat</td>
+	<td><b>CPU statistics since boot.<br>
+		Example:</b><br>
+		<ol>
+			<li><b>mpstat 2           --></b> Sample every 2 seconds</li>
+			<li><b>mpstat 2 5         --></b> Sample every 2 seconds, 5 times</li>
+			<li><b>mpstat -P ALL  1   --></b>Displays utilization for each CPU core every second. It immediately shows whether one specific core is overloaded while others are idle.</li>
+			<li><b>mpstat -I ALL      --></b> Interrupt statistics</li>
+			<li><b>mpstat -A          --></b>Everything (CPU + interrupts + NUMA)</li><br>
+		</ol>
+		<table>
+			<tr>
+				<td>%usr</td>
+				<td>Time spent running user processes</td>
+			</tr>
+			<tr>
+				<td>%sys</td>
+				<td>Time spent in kernel/system code</td>
+			</tr>
+			<tr>
+				<td>%iowait</td>
+				<td>CPU waiting for disk/network I/O</td>
+			</tr>
+			<tr>
+				<td>%idle</td>
+				<td>CPU idle time</td>
+			</tr>
+			<tr>
+				<td>%irq</td>
+				<td>Hardware interrupt handling</td>
+			</tr>
+			<tr>
+				<td>%soft</td>
+				<td>Software interrupt handling</td>
+			</tr>
+		</table>
+	</td>
+</tr>
 </table>
 
 <h3>Gdb commands: </h3>
