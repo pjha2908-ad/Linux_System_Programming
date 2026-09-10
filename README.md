@@ -725,14 +725,58 @@
 	 <td><code>nohup</code></td>
 	 <td>Keeps the process running after logout.<br>
 	 	<b>Without nohup:</b><br>
-		 <mark>python app.py</mark><br>Logout, process stops.<br>
+		 <mark><b>python app.py</b></mark><br>Logout, process stops.<br>
 		<b>With nohup: </b><br>
-		 <mark>nohup python app.py &</mark><br><b>Output:</b><br>
+		 <mark><b>nohup python app.py &</b></mark><br><b>Output:</b><br>
 		 appending output to nohup.out. Meaning Output saved in  nohup.out file.<br>
-		 <b>Redirect output:</b>
+		 <b>Redirect output:</b><br>
 		 <mark><b>nohup python app.py > app.log 2>&1 &</b></mark><br><b>Meaning:</b><br>
 		 stdout → app.log<br>stderr → app.log<br><br><b>Real Time Example<br>Run deployment:<br>
 		 <mark>nohup ./deploy.sh > deploy.log 2>&1 &</mark></b><br>Close the terminal. Deployment continues.
+	 </td>
+ </tr>
+
+ <tr>
+	 <td><code>curl</code></td>
+	 <td>curl (short for "Client URL") .<br><b>options</b>
+		 <ol>
+			 <li><b>-I:</b>Show Response Headers.<br>
+			 	<ul>
+			 		<li><mark><b>curl -I https://example.com</mark>  --></b> Useful for checking status code, server info, redirects.</li>
+				</ul>
+			 </li>
+			 <li><b>-O:</b> Download a File.<br>
+				<ul>
+					<li><mark><b>curl -O https://example.com/file.zip</mark> --></b> Saves with original filename.</li>
+					<li><mark><b>curl -o backup.zip https://example.com/file.zip</mark>  --></b> Save with Custom Name.</li>
+				</ul>
+			 </li>
+			 <li><b>-L:</b> Follow Redirects.
+			 	<ul>
+					<li><mark><b>curl -L https://example.com</mark>   --></b>  Useful when URL redirects.</li>
+				</ul>
+			 </li>
+			 <li><b>-X:</b> Send POST Request<br>
+				 <ul>
+					 <li><mark>curl -X POST https://api.example.com/login  </mark></li>
+					 <li><b>Send JSON Data:</b><br>
+						 <mark>curl -X POST https://api.example.com/users \<br>
+						 -H "Content-Type: application/json" \<br>
+						 -d '{"name":"john"}'</mark>
+					 </li>
+				 </ul>
+			 </li>
+			 <li><b>-u:</b> Basic Authentication<br>
+				 <ul>
+					 <li><mark>curl -u admin:password https://example.com</mark></li>
+				 </ul>
+			 </li>
+			 <li><b>Test API Response Code Only:</b><br>
+				 <ul>
+					 <li><mark>curl -o /dev/null -s -w "%{http_code}\n" https://example.com</mark></li>
+				 </ul>
+			 </li>
+		 </ol>
 	 </td>
  </tr>
 </table>
