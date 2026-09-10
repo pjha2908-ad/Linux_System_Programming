@@ -720,6 +720,21 @@
    <td><code>ausearch -f /etc/nginx/nginx.conf</code></td>
    <td>Investigate modifications to critical files.</td>
  </tr>
+
+ <tr>
+	 <td><code>nohup</code></td>
+	 <td>Keeps the process running after logout.<br>
+	 	<b>Without nohup:</b><br>
+		 <mark>python app.py</mark><br>Logout, process stops.<br>
+		<b>With nohup: </b><br>
+		 <mark>nohup python app.py &</mark><br><b>Output:</b><br>
+		 appending output to nohup.out. Meaning Output saved in  nohup.out file.<br>
+		 <b>Redirect output:</b>
+		 <mark><b>nohup python app.py > app.log 2>&1 &</b></mark><br><b>Meaning:</b><br>
+		 stdout → app.log<br>stderr → app.log<br><br><b>Real Time Example<br>Run deployment:<br>
+		 <mark>nohup ./deploy.sh > deploy.log 2>&1 &</mark></b><br>Close the terminal. Deployment continues.
+	 </td>
+ </tr>
 </table>
 
 <h3>Gdb commands: </h3>
