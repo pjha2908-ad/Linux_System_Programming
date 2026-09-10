@@ -738,7 +738,7 @@
 
  <tr>
 	 <td><code>curl</code></td>
-	 <td>curl (short for "Client URL") .<br><b>options</b>
+	 <td>curl (short for "Client URL") .<br><b>options:</b>
 		 <ol>
 			 <li><b>-I:</b>Show Response Headers.<br>
 			 	<ul>
@@ -777,6 +777,98 @@
 				 </ul>
 			 </li>
 		 </ol>
+	 </td>
+ </tr>
+
+ <tr>
+	 <td>wget</td>
+	 <td>
+		 wget downloads files from the internet. It is simple and script-friendly.<br><b>Options:</b><br>
+		 <ol>
+			 <li><b>Basic download:</b><br>
+				 <mark>wget https://example.com/file.zip</mark>
+			 </li>
+			 <li><b>-O : Save with Custom Name</b><br>
+			 	<mark>wget -O backup.zip https://example.com/file.zip</mark>
+			 </li>
+			 <li><b>-c: Resume Interrupted Download. Very useful for large files.</b><br>
+			 	<mark>wget -c https://example.com/file.zip</mark>
+			 </li>
+			 <li><b>-b: Download in Background</b><br>
+				 <mark>wget -b https://example.com/file.zip</mark>
+			 </li>
+			 <li><b>--limit-rate: Limit Download Speed</b><br>
+			 	<mark>wget --limit-rate=500k https://example.com/file.zip</mark>
+			 </li>
+			 <li><b>--mirror: Download Entire Website</b><br>
+				 <mark>wget --mirror https://example.com</mark>
+			 </li>
+			 <li><b>--user=username --password=password: Download with Authentication</b><br>
+			 	<mark>wget --user=username --password=password https://example.com/file.zip</mark>
+			 </li>
+		 </ol>
+	 </td>
+ </tr>
+
+ <tr>
+	 <td>nslookup</td>
+	 <td>nslookup checks DNS resolution. If a domain is not opening, this command helps you check whether DNS is working. <br>
+	 	<b>Options:</b><br>
+		 <ol>
+			 <li><b>Basic Lookup:</b><br><mark>nslookup google.com</mark></li>
+			 <li><b>Query Specific DNS Server:</b><br><mark>nslookup google.com 8.8.8.8</mark></li>
+			 <li><b>Find Mail server(mx) records:</b><br><mark>nslookup -query=mx gmail.com</mark></li>
+			 <li><b>Find Name server(ns) records:</b><br><mark>nslookup -query=ns google.com</mark></li>
+			 <li><b>Reverse DNS Lookup (Find hostname from IP).</b><br><mark>nslookup 8.8.8.8</mark></li>
+			 <li><b>Interactive Mode<br>Start:</b><br><mark>nslookup</mark></li>
+			 <li><b>Then:</b><br><mark>set type=mx<br>google.com</mark></li>
+		 </ol>
+	 </td>
+ </tr>
+
+ <tr>
+	 <td>traceroute google.com<br>OR<br>tracepath google.com</td>
+	 <td>Where exactly is the packet dying?<br>What it shows:<br>
+		 <ul>
+			 <li>All hops between server and destination</li>
+			 <li>Where packet stops</li>
+			 <li>RTT per hop (delay)</li>
+		 </ul>
+	 </td>
+ </tr>
+
+ <tr>
+	 <td>^old^new</td>
+	 <td>Fix Typos Instantly. Instead of pressing up and manually editing it, use the ^old^new substitution trick:<br>
+	 <b>e.g:</b><br>
+		 git chekcout main<br>^chekcout^checkout<br>This replaces chekcout with checkout in the last command and runs it immediately.
+	 </td>
+ </tr>
+
+ <tr>
+ 	<td>last</td>
+	<td>This shows a list of every user who has logged in, when they logged in, where they logged in from, and how long the session lasted. The most recent entries appear at the top.
+	</td>
+ </tr>
+
+ <tr>
+	 <td>chmod u-w &lt;folder/filename&gt;</td>
+	 <td>Remove owner write permission.</td>
+ </tr>
+ 
+ <tr>
+	 <td>chmod g+w &lt;folder/filename&gt;</td>
+	 <td>Add group write permission.</td>
+ </tr>
+ <tr>
+	 <td>chmod o+w,o-rx &lt;folder/filename&gt;</td>
+	 <td>Modify others.</td>
+ </tr>
+
+ <tr>
+	 <td>chown -Rv sachin.market data2<br>chmod -Rv o+w,o-r data2</td>
+	 <td>Recursive Changes.<br><mark>-R =</mark>recursive<br>
+	 	<mark>-v = </mark>verbose
 	 </td>
  </tr>
 </table>
