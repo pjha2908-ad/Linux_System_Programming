@@ -1,4 +1,4 @@
-<h1>System Programming</h1>
+<img width="304" height="38" alt="image" src="https://github.com/user-attachments/assets/93ad3b69-8537-4224-9793-982e0bdf5620" /><img width="300" height="38" alt="image" src="https://github.com/user-attachments/assets/094793f1-ed9e-4db4-8669-33820ae98f1b" /><img width="410" height="38" alt="image" src="https://github.com/user-attachments/assets/743b52ae-4ab7-45ce-a15d-82aa548eaeda" /><img width="548" height="38" alt="image" src="https://github.com/user-attachments/assets/3fd946ad-e595-4da1-9e6b-1bcb054eae0b" /><img width="586" height="42" alt="image" src="https://github.com/user-attachments/assets/c9041e54-f965-4c1c-a464-1f41428f492d" /><img width="362" height="38" alt="image" src="https://github.com/user-attachments/assets/3e734abc-493d-46a8-a145-753a05165661" /><img width="2178" height="42" alt="image" src="https://github.com/user-attachments/assets/3fac1cd3-1ba3-4c84-a62d-ad473c00a4d7" /><img width="296" height="38" alt="image" src="https://github.com/user-attachments/assets/d554526d-b549-4653-9595-ebedd90622b1" /><img width="322" height="38" alt="image" src="https://github.com/user-attachments/assets/ef0ef7ec-bacc-4a8a-b3fb-a916f078386e" /><img width="1858" height="76" alt="image" src="https://github.com/user-attachments/assets/3ca46feb-c151-43e8-bc7b-97d9d4eb0f70" /><img width="818" height="38" alt="image" src="https://github.com/user-attachments/assets/da9d1b3b-db1b-486d-9cae-132b6e6b6f8b" /><img width="1476" height="38" alt="image" src="https://github.com/user-attachments/assets/7c46a870-72b8-48bf-938b-584bfabaaece" /><h1>System Programming</h1>
 <h3>Useful Links: </h3>
 <ul>
   <li>https://medium.com/@boutnaru/the-linux-concept-journey-syscalls-system-calls-efcd7703e072</li>
@@ -1067,6 +1067,111 @@
 		The <b>-12</b> part tells comm to hide the first two categories, showing you only the third, the lines both files actually share.
 	</td>
 </tr>
+
+<tr>
+	<td><code>stat &lt;file_name&gt;</code></td>
+	<td>To check the metadata of a file, use the stat command. It displays all core filesystem metadata, including file size, permissions, inode number, and timestamps.</td>
+</tr>
+
+<tr>
+	<td><code>wc</code></td>
+	<td>The wc (word count) command in Linux is used to count lines, words, characters, and bytes in a file.<br>
+	<ul>
+		<li><b>-l, --lines: </b>Counts the number of newlines (lines).</li>
+		<li><b>-w, --word: </b>Counts the number of words (delimited by spaces).</li>
+		<li><b>-c, --bytes: </b>Counts the number of bytes.</li>
+		<li><b>-m, --chars: </b>Counts the number of characters (different from bytes for multi-byte characters like emojis).</li>
+		<li><b>-L, --max-line-length: </b>Prints the length of the longest line in bytes.</li>
+		<li><b>--files0-from=F: </b>Reads input from the files specified by NUL-terminated names in file F.</li>
+	</ul>
+	</td>
+</tr>
+
+<tr>
+	<td><code>sort -k4nr</code></td>
+	<td>The command sort -k4nr sorts data based on the 4th column, treating it as a number, in reverse (descending) order.
+		<ul>
+			<li><b>-k4: </b>Specifies the key (column) to sort by. In this case, it targets the 4th column.</li>
+			<li><b>n: </b>Enables numerical sorting. Without this, 10 would mistakenly sort before 2 because alphabetical sorting only evaluates the first digit.</li>
+			<li><b>r: </b>Triggers reverse sorting, organizing the data from highest to lowest instead of the default lowest to highest.</li>
+		</ul>
+	</td>
+</tr>
+
+<tr>
+	<td><code>ltrace &lt;binary_name&gt;</code></td>
+	<td>ltrace is used to display all library APIs in the process-execution path. (Similary as strace is used to trace all system calls).</td>
+</tr>
+
+<tr>
+	<td><code>lsb_release</code></td>
+	<td>The lsb_release (Linux Standard Base Release) command is a built-in utility used to print distribution-specific information about your Linux operating system.<br>
+		It provides an efficient way to find out your exact Linux distribution name, version number, and code name, which is incredibly useful for writing cross-platform shell 		scripts.<br>
+		<b>Options: <br>------------<br></b><br>
+		<ul>
+			<li><b>-a, --all: </b>Displays all available system information in a structured list.</li>
+			<li><b>-i, --id: </b>Prints the Distributor ID string (e.g., Ubuntu, Debian, CentOS).</li>
+			<li><b>-r, --release: </b>Prints the specific release version number of the OS (e.g., 24.04).</li>
+			<li><b>-c, --codename: </b>Prints the distribution release codename (e.g., noble, jammy, bookworm).</li>
+			<li><b>-d, --description: </b>Prints a single-line descriptive summary of the operating system.</li>
+			<li><b>-s, --short: </b>Strips out header labels to print only the raw value (crucial for assigning shell variables).</li>
+		</ul>
+	</td>
+</tr>
+
+<tr>
+	<td><code>df</code></td>
+	<td><b><mark>Disk Free</mark></b><br>
+		The df (disk free) command in Linux and Unix-like operating systems displays the amount of available and used storage space on mounted filesystems.<br>
+		<b>Options: <br>------------</b><br>
+		<ul>
+			<li><b>-h: </b>Show in Human-Readable Format. Converts block numbers into easily digestible sizes like Megabytes (M) or Gigabytes (G) based on powers of 1024.</li>
+			<li><b>-T: </b>Include Filesystem Types.</li>
+			<li><b>-i: </b>Check Inode Utilization.</li>
+			<li><b>-t: </b>Filter pecific Formats.</li>
+			<li><b>-x: </b>Exclude Specific Formats.<br>
+				<b>e.g: <br>------</b><br>
+				<mark><b>df -t ext4</b></mark> # Show only ext4 filesystems. <br>
+				<mark><b>df -x tmpfs</b></mark> # Exclude temporary tmpfs layers
+			</li>
+			<li><b>--total: </b>Display a Grand Total. Appends a summary line at the bottom calculating the net totals across all listed items.<br>
+				<mark><b>df -h --total</b></mark>
+			</li>
+		</ul>		
+	</td>
+</tr>
+
+<tr>
+	<td><code>nl</code></td>
+	<td><b>number line.</b><br>
+		<b><mark>nl &lt;Option&gt; &lt;Parameter&gt;</mark></b><br>
+		The <b><mark>nl (number lines)</mark></b> command in Linux and Unix-like operating systems reads lines from a file or standard input and writes them to standard output 		with line numbers added.<br>
+		<b><mark>Option: <br>--------</b></mark><br>
+		<ul>
+			<li><b>-b or --body-numbering= : </b>Number All Body Lines (Including Blanks).</li>
+			<li><b>-i: </b>Change the Numbering Increment</li>
+			<li><b>-v: </b>Change the Starting Number. Starts the count from a number other than 1.</li>
+			<li><b>rn: </b>Right-justified, no leading zeros (Default).</li>
+			<li><b>rz: </b>Right-justified, padded with leading zeros.</li>
+			<li><b>ln: </b>Left-justified, no leading zeros.<br>
+				<b>e.g:<br>
+				<mark>nl -n rz filename.txt</mark></b> # -n rz: Sets the number format to Right-justified with leading Zeros (rz).
+			</li>
+			<li><b>-w: </b>Modify Number Width. <br>
+				<b>e.g: </b>nl -w 3 filename.txt
+			</li>
+			<li><b>-s: </b>Use a Custom Separator String.</li>
+		</ul>
+		<b><mark>Parameter: <br>----------</mark></b>
+		<ul>
+			<li><b>a (Number all lines): </b>Numbers every single line, including blank lines.</li>
+			<li><b>t (Number non-empty lines): </b>Default behavior for the body section. It skips blank lines.</li>
+			<li><b>n (No line numbers): </b>Default behavior for headers and footers. No numbers are printed.</li>
+			<li><b>pREGEXP (Number matching regex): </b>Only numbers lines containing a match for the specified basic regular expression.</li>
+		</ul>
+	</td>
+
+
 </table>
 
 <h3>Gdb commands: </h3>
