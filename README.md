@@ -1,4 +1,4 @@
-<img width="304" height="38" alt="image" src="https://github.com/user-attachments/assets/93ad3b69-8537-4224-9793-982e0bdf5620" /><img width="300" height="38" alt="image" src="https://github.com/user-attachments/assets/094793f1-ed9e-4db4-8669-33820ae98f1b" /><img width="410" height="38" alt="image" src="https://github.com/user-attachments/assets/743b52ae-4ab7-45ce-a15d-82aa548eaeda" /><img width="548" height="38" alt="image" src="https://github.com/user-attachments/assets/3fd946ad-e595-4da1-9e6b-1bcb054eae0b" /><img width="586" height="42" alt="image" src="https://github.com/user-attachments/assets/c9041e54-f965-4c1c-a464-1f41428f492d" /><img width="362" height="38" alt="image" src="https://github.com/user-attachments/assets/3e734abc-493d-46a8-a145-753a05165661" /><img width="2178" height="42" alt="image" src="https://github.com/user-attachments/assets/3fac1cd3-1ba3-4c84-a62d-ad473c00a4d7" /><img width="296" height="38" alt="image" src="https://github.com/user-attachments/assets/d554526d-b549-4653-9595-ebedd90622b1" /><img width="322" height="38" alt="image" src="https://github.com/user-attachments/assets/ef0ef7ec-bacc-4a8a-b3fb-a916f078386e" /><img width="1858" height="76" alt="image" src="https://github.com/user-attachments/assets/3ca46feb-c151-43e8-bc7b-97d9d4eb0f70" /><img width="818" height="38" alt="image" src="https://github.com/user-attachments/assets/da9d1b3b-db1b-486d-9cae-132b6e6b6f8b" /><img width="1476" height="38" alt="image" src="https://github.com/user-attachments/assets/7c46a870-72b8-48bf-938b-584bfabaaece" /><h1>System Programming</h1>
+<img width="1438" height="42" alt="image" src="https://github.com/user-attachments/assets/d3eb90d5-a30f-4963-b08e-55081040bc0f" /><img width="2620" height="110" alt="image" src="https://github.com/user-attachments/assets/e6ae0d8c-bdfb-465c-9468-afe9b8b86c21" /><img width="2614" height="74" alt="image" src="https://github.com/user-attachments/assets/b1e57528-f694-4e12-bd1a-2db54690acc3" /><img width="1418" height="38" alt="image" src="https://github.com/user-attachments/assets/d9bda957-5f9f-4a15-be31-0c6d9a4301d7" /><img width="1906" height="38" alt="image" src="https://github.com/user-attachments/assets/4f400246-d77e-4f0f-9ffd-8d2c0b2682b3" /><img width="304" height="38" alt="image" src="https://github.com/user-attachments/assets/93ad3b69-8537-4224-9793-982e0bdf5620" /><img width="300" height="38" alt="image" src="https://github.com/user-attachments/assets/094793f1-ed9e-4db4-8669-33820ae98f1b" /><img width="410" height="38" alt="image" src="https://github.com/user-attachments/assets/743b52ae-4ab7-45ce-a15d-82aa548eaeda" /><img width="548" height="38" alt="image" src="https://github.com/user-attachments/assets/3fd946ad-e595-4da1-9e6b-1bcb054eae0b" /><img width="586" height="42" alt="image" src="https://github.com/user-attachments/assets/c9041e54-f965-4c1c-a464-1f41428f492d" /><img width="362" height="38" alt="image" src="https://github.com/user-attachments/assets/3e734abc-493d-46a8-a145-753a05165661" /><img width="2178" height="42" alt="image" src="https://github.com/user-attachments/assets/3fac1cd3-1ba3-4c84-a62d-ad473c00a4d7" /><img width="296" height="38" alt="image" src="https://github.com/user-attachments/assets/d554526d-b549-4653-9595-ebedd90622b1" /><img width="322" height="38" alt="image" src="https://github.com/user-attachments/assets/ef0ef7ec-bacc-4a8a-b3fb-a916f078386e" /><img width="1858" height="76" alt="image" src="https://github.com/user-attachments/assets/3ca46feb-c151-43e8-bc7b-97d9d4eb0f70" /><img width="818" height="38" alt="image" src="https://github.com/user-attachments/assets/da9d1b3b-db1b-486d-9cae-132b6e6b6f8b" /><img width="1476" height="38" alt="image" src="https://github.com/user-attachments/assets/7c46a870-72b8-48bf-938b-584bfabaaece" /><h1>System Programming</h1>
 <h3>Useful Links: </h3>
 <ul>
   <li>https://medium.com/@boutnaru/the-linux-concept-journey-syscalls-system-calls-efcd7703e072</li>
@@ -1107,7 +1107,7 @@
 	<td><code>lsb_release</code></td>
 	<td>The lsb_release (Linux Standard Base Release) command is a built-in utility used to print distribution-specific information about your Linux operating system.<br>
 		It provides an efficient way to find out your exact Linux distribution name, version number, and code name, which is incredibly useful for writing cross-platform shell 		scripts.<br>
-		<b>Options: <br>------------<br></b><br>
+		<b>Options: <br>------------<br></b>
 		<ul>
 			<li><b>-a, --all: </b>Displays all available system information in a structured list.</li>
 			<li><b>-i, --id: </b>Prints the Distributor ID string (e.g., Ubuntu, Debian, CentOS).</li>
@@ -1132,7 +1132,7 @@
 			<li><b>-x: </b>Exclude Specific Formats.<br>
 				<b>e.g: <br>------</b><br>
 				<mark><b>df -t ext4</b></mark> # Show only ext4 filesystems. <br>
-				<mark><b>df -x tmpfs</b></mark> # Exclude temporary tmpfs layers
+				<mark><b>df -x tmpfs</b></mark> # Exclude temporary tmpfs layers. <br>
 			</li>
 			<li><b>--total: </b>Display a Grand Total. Appends a summary line at the bottom calculating the net totals across all listed items.<br>
 				<mark><b>df -h --total</b></mark>
@@ -1146,7 +1146,7 @@
 	<td><b>number line.</b><br>
 		<b><mark>nl &lt;Option&gt; &lt;Parameter&gt;</mark></b><br>
 		The <b><mark>nl (number lines)</mark></b> command in Linux and Unix-like operating systems reads lines from a file or standard input and writes them to standard output 		with line numbers added.<br>
-		<b><mark>Option: <br>--------</b></mark><br>
+		<b><mark>Option: <br>--------</mark></b><br>
 		<ul>
 			<li><b>-b or --body-numbering= : </b>Number All Body Lines (Including Blanks).</li>
 			<li><b>-i: </b>Change the Numbering Increment</li>
@@ -1170,8 +1170,105 @@
 			<li><b>pREGEXP (Number matching regex): </b>Only numbers lines containing a match for the specified basic regular expression.</li>
 		</ul>
 	</td>
+</tr>
 
+<tr>
+	<td><code>dmsetup info</code></td>
+	<td>Running sudo dmsetup info without any arguments will output detailed status and technical metadata for all active Device Mapper devices on your system.
+</td>
+</tr>
 
+<tr>
+	<td><code>blkid</code></td>
+	<td>Running blkid (Block Device Attributes) without any arguments will locate and print the attributes—such as the <b>UUID (Universally Unique Identifier), File System Type 		(TYPE),</b> and <b>Volume Label (LABEL)</b>—for all active block devices on your system.
+	</td>
+</tr>
+
+<tr>
+	<td><code>dd if=/dev/zero of=disk.img bs=1M count=1024</code></td>
+	<td>This command will create a blank, 1 Gigabyte virtual disk image named disk.img in your current working directory.<br>
+		<ul>
+			<li><b>if=/dev/zero: </b>The <b>Input File.</b> This tells the command to read character data from /dev/zero, a special Linux subsystem device that generates a 					continuous stream of null bytes (zeros).
+			</li>
+			<li><b>of=disk.img: </b>The <b>Output File.</b> This is the destination file that will store your raw disk image.</li>
+			<li><b>bs=1M: </b>The <b>Block Size.</b> It tells dd to read and write data in chunks of 1 Megabyte at a time.</li>
+			<li><b>count=1024: </b>The <b>Total Blocks.</b> It instructs the command to write exactly 1,024 blocks. (1,024 blocks × 1 Megabyte = 1,024 MB or exactly
+				<b>1 GB</b>).
+			</li>
+		</ul>
+	</td>
+</tr>
+
+<tr>
+	<td><code>sudo losetup -f ./disk.img</code></td>
+	<td>That command will successfully bind your 1 GB virtual disk image to the next available loop device on your system!<br>
+		<ul>
+			<li><b>-f flag : </b>the Linux kernel automatically selected an unused slot to prevent overwriting an existing mount.</li>
+		</ul>
+	</td>
+</tr>
+
+<tr>
+	<td><code>losetup -a</code></td>
+	<td>Display which loop device was assigned.</td>
+</tr>
+
+<tr>
+	<td><code>sudo mkfs.ext4 /dev/loop8</code></td>
+	<td>Format the newly created loop device with the ext4 filesystem. Here loop8 is the output of losetup -a cmd.<br>
+		<b>Next, Mount it to read and write files: </b>
+		<ul>
+			<li>Create a target folder (mount point): <br>
+				<mark><b>sudo mkdir -p /mnt/myvirtualdisk</b></mark>
+			</li>
+			<li>Mount the loop device to that folder: <br>
+				<mark><b>sudo mount /dev/loop8 /mnt/myvirtualdisk</b></mark>
+			</li>
+			<li>Verify it is mounted and check the space: <br>
+				<mark><b>df -h /mnt/myvirtualdisk </b></mark> <br>
+			</li>
+		</ul>
+		To make it persistent, pls update the disk.img file entry in /etc/fstab file.
+	</td>
+</tr>
+
+<tr>
+	<td><code>vgcreate</code></td>
+	<td>The <b>vgcreate</b> command is used in Linux to create a Volume Group (VG) within the Logical Volume Manager (LVM) architecture. It pools together one or more physical 		storage devices (Physical Volumes, or PVs) into a single, cohesive unit of storage space.
+	</td>
+</tr>
+
+<tr>
+	<td><code>pvs</code></td>
+	<td>The <b>pvs</b> command is used in Linux <b>LVM (Logical Volume Manager)</b> to display a quick, clean summary of your Physical Volumes (PVs). It gives you an immediate 		look at which physical drives or partitions are hooked into LVM, how much space they have, and which Volume Groups (VGs) they belong to.<br><b>Output: <br>--------</b><br>
+		<table>
+			<tr>
+				<th>PV</th>
+				<th>VG</th>
+				<th>Fmt</th>
+				<th>Attr</th>
+				<th>PSize</th>
+				<th>PFree</th>
+			</tr>
+			<tr>
+				<td>/dev/nvme0n1p3</td>
+				<td>ubuntu-vg </td>
+				<td>lvm2</td>
+				<td>a--</td>
+				<td>&lt;196.95g </td>
+				<td>0</td>
+			</tr>
+		</table>
+	<ul>
+		<li><b>PV: </b>The physical disk or partition name (e.g., /dev/nvme0n1p3).</li>
+		<li><b>VG: </b>The <b>Volume Group</b> that this disk is currently assigned to. If it's blank, the disk is initialized for LVM but hasn't been added to a group yet.</li>
+		<li><b>Fmt: </b>The LVM format version (usually lvm2).</li>
+		<li><b>Attr: </b>Status attributes. The most common is a--, which means <b>active.</b></li>
+		<li><b>PSize: </b>The total physical size of the disk allocated to LVM.</li>
+		<li><b>PFree: </b>The unallocated, <b>free space</b> remaining on that disk that has not yet been assigned to a Logical Volume (LV).</li>
+	</ul>
+</td>
+</tr>
 </table>
 
 <h3>Gdb commands: </h3>
